@@ -1,10 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://dmo6ch2xreba2"]
+[gd_scene load_steps=46 format=3 uid="uid://dmo6ch2xreba2"]
 
 [ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_6utvc"]
-[ext_resource type="Shader" uid="uid://dyacwyt1jotmf" path="res://glow.gdshader" id="2_j7inc"]
+[ext_resource type="Shader" path="res://glow.gdshader" id="2_j7inc"]
 [ext_resource type="Texture2D" uid="uid://cfs6ouh4nwmo6" path="res://assets/living room/salon_bibliotheque_normal.png" id="3_mogh0"]
 [ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="4_j7inc"]
-[ext_resource type="Script" path="res://scripts/possessable.gd" id="5_weu2t"]
+[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_weu2t"]
 [ext_resource type="AudioStream" uid="uid://bhywv65m3oipk" path="res://assets/SFX/salon/livres.ogg" id="6_mj6ii"]
 [ext_resource type="Texture2D" uid="uid://dtd56vblvdogx" path="res://assets/living room/salon_meubletv.png" id="7_joy5l"]
 [ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="8_s8sbf"]
@@ -17,6 +17,9 @@
 [ext_resource type="Texture2D" uid="uid://xreh1naohoar" path="res://assets/objects/salon_citrouille.png" id="14_mogh0"]
 [ext_resource type="Texture2D" uid="uid://r75hx56jw74l" path="res://assets/objects/salon_citrouillewink.png" id="15_j7inc"]
 [ext_resource type="Texture2D" uid="uid://dte4r5os58hrx" path="res://assets/living room/salon_lampeon.png" id="15_ppm0j"]
+[ext_resource type="Texture2D" uid="uid://dbn00xxamnb5t" path="res://assets/living room/salon_citrouilleP.png" id="15_weu2t"]
+[ext_resource type="AudioStream" uid="uid://c8k4eomqiqj8" path="res://assets/SFX/salon/laugh.mp3" id="17_mj6ii"]
+[ext_resource type="AudioStream" uid="uid://dqmvttrnhcb5d" path="res://assets/SFX/salle de bain/interupteur on.mp3" id="20_mj6ii"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vki7j"]
 shader = ExtResource("2_j7inc")
@@ -209,12 +212,37 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_weu2t")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_j7inc")
 }],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_weu2t")
+}],
+"loop": true,
+"name": &"possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_j7inc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j7inc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j7inc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_j7inc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_weu2t")
+}],
+"loop": true,
+"name": &"use",
 "speed": 5.0
 }]
 
@@ -290,7 +318,6 @@ object_name = "Bookshelf"
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonBibliotheque/Area2D"]
-visible = false
 position = Vector2(-535, -38.5)
 shape = SubResource("RectangleShape2D_cb6sc")
 
@@ -331,7 +358,6 @@ object_name = "TV"
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonTv/Area2D"]
-visible = false
 position = Vector2(-541, -50.5)
 shape = SubResource("RectangleShape2D_xplcm")
 
@@ -343,20 +369,18 @@ z_index = 1
 material = SubResource("ShaderMaterial_ppxhu")
 position = Vector2(14, -216)
 sprite_frames = SubResource("SpriteFrames_mj6ii")
-frame_progress = 0.031223794
 script = ExtResource("5_weu2t")
-object_name = "TV"
+object_name = "Pumpkin"
 
 [node name="Area2D" type="Area2D" parent="SalonCitrouille"]
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonCitrouille/Area2D"]
-visible = false
 position = Vector2(-532.5, -40.5)
 shape = SubResource("RectangleShape2D_joy5l")
 
 [node name="UsePlayer" type="AudioStreamPlayer" parent="SalonCitrouille"]
-stream = ExtResource("13_vi1qt")
+stream = ExtResource("17_mj6ii")
 
 [node name="SalonLampe" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -371,12 +395,11 @@ object_name = "Lamp"
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonLampe/Area2D"]
-visible = false
 position = Vector2(-538.5, -42)
 shape = SubResource("RectangleShape2D_lhr5s")
 
 [node name="UsePlayer" type="AudioStreamPlayer" parent="SalonLampe"]
-stream = ExtResource("13_vi1qt")
+stream = ExtResource("20_mj6ii")
 
 [node name="PointLight2D" type="PointLight2D" parent="SalonLampe"]
 visible = false
