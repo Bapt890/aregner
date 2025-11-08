@@ -18,6 +18,10 @@ var base_rot = 0.0
 var shake_tween = null
 
 func _ready():
+	var area = $Area2D
+	area.mouse_entered.connect(_on_area_2d_mouse_entered)
+	area.mouse_exited.connect(_on_area_2d_mouse_exited)
+	area.input_event.connect(_on_area_2d_input_event)
 	base_pos = position
 	base_rot = rotation
 	SignalBus.use.connect(on_use)

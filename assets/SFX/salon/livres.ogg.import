@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/livres.ogg-44e383816a286ac31cdd494a9c3fc75b.o
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4
