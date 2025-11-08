@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://bch6810psuy0p"]
+
+[ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_78gxd"]
+[ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="2_blbhe"]
+[ext_resource type="Texture2D" uid="uid://dtd56vblvdogx" path="res://assets/living room/salon_meubletv.png" id="3_qupsq"]
+[ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="4_lq2bk"]
+[ext_resource type="Texture2D" uid="uid://ctk0tbdul3naj" path="res://assets/living room/salon_gueridon.png" id="5_7k7mp"]
+[ext_resource type="Texture2D" uid="uid://dq0lyn0hj1l0p" path="res://assets/living room/salon_canape.png" id="6_oh8xf"]
+[ext_resource type="Texture2D" uid="uid://cknx3opnwbxxd" path="res://assets/living room/salon_tv.png" id="7_w5tvh"]
+[ext_resource type="Texture2D" uid="uid://cscvqaaqh68eh" path="res://assets/living room/salon_lampe.png" id="8_xijsw"]
+
+[node name="LivingRoom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_78gxd")
+
+[node name="SalonBibliotheque" type="Sprite2D" parent="."]
+position = Vector2(-533, -39)
+texture = ExtResource("2_blbhe")
+
+[node name="SalonMeubletv" type="Sprite2D" parent="."]
+position = Vector2(272, -41)
+texture = ExtResource("3_qupsq")
+
+[node name="SalonTapis" type="Sprite2D" parent="."]
+position = Vector2(136, 115)
+texture = ExtResource("4_lq2bk")
+
+[node name="SalonGueridon" type="Sprite2D" parent="."]
+position = Vector2(13, -150)
+texture = ExtResource("5_7k7mp")
+
+[node name="SalonCanape" type="Sprite2D" parent="."]
+position = Vector2(36, 134)
+texture = ExtResource("6_oh8xf")
+
+[node name="SalonTv" type="Sprite2D" parent="."]
+position = Vector2(290, -207)
+texture = ExtResource("7_w5tvh")
+
+[node name="SalonLampe" type="Sprite2D" parent="."]
+position = Vector2(451, 6)
+texture = ExtResource("8_xijsw")

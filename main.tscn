@@ -1,11 +1,14 @@
-[gd_scene load_steps=11 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=14 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://bqnn1m8fx08fe" path="res://assets/spider.png" id="2_0xm2m"]
+[ext_resource type="PackedScene" uid="uid://lwbm555q4l6v" path="res://scene/npc.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dcv6rxbagi8t0" path="res://scene/destination.tscn" id="3_kek77"]
 [ext_resource type="Shader" uid="uid://bwnenq6js1y5x" path="res://scripts/shaders/outline.gdshader" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cpfdukjr0hajs" path="res://assets/objects/toaster.png" id="4_7mycd"]
 [ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possesable.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://bxbiobssdnvdc" path="res://scripts/fear_meter.gd" id="6_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bch6810psuy0p" path="res://scene/living_room.tscn" id="7_272bh"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
 
@@ -26,7 +29,37 @@ size = Vector2(2139.5322, 1890.2661)
 
 [node name="Main" type="Node2D"]
 
-[node name="LivingRoom" type="Camera2D" parent="."]
+[node name="LivingRoom" parent="." instance=ExtResource("7_272bh")]
+
+[node name="NPC" type="Node" parent="."]
+
+[node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
+target = NodePath("../Destinations/Destination")
+
+[node name="Destinations" type="Node" parent="NPC"]
+
+[node name="Destination" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(-430, 161)
+cause_stop = true
+stop_duration = 2
+linked_destinations = [NodePath("../Destination2"), NodePath("../Destination3"), NodePath("../Destination4")]
+
+[node name="Destination2" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(-10, 392)
+orientation = 3
+linked_destinations = [NodePath("../Destination"), NodePath("../Destination3"), NodePath("../Destination4")]
+
+[node name="Destination3" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(178, 159)
+orientation = 3
+linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination4")]
+
+[node name="Destination4" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(-276, 67)
+orientation = 3
+linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination3")]
+
+[node name="Camera" type="Camera2D" parent="."]
 
 [node name="Kitchen" type="Camera2D" parent="."]
 
@@ -65,6 +98,8 @@ offset_right = 466.0
 offset_bottom = 27.0
 script = ExtResource("6_7mycd")
 metadata/_edit_use_anchors_ = true
+
+[node name="Destination" parent="." instance=ExtResource("3_kek77")]
 
 [connection signal="input_event" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_entered"]
