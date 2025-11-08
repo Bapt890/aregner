@@ -1,4 +1,4 @@
-extends Sprite2D
+extends AnimatedSprite2D
 
 @export var hover_strength_size = 0.5
 @export var animation_speed = 5.0
@@ -39,6 +39,7 @@ func _on_area_2d_mouse_exited():
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		SignalBus.possess.emit(object_name, global_position)
+		self.play("possessed")
 		Globals.current_object = object_name
 
 func on_use(level):
@@ -46,8 +47,7 @@ func on_use(level):
 		if level == "low":
 			start_shake()
 		else:
-			var anim = get_node_or_null("ObjectAnimation")
-			anim.play(level)
+			self.play("use")
 
 func start_shake():
 	if shake_tween and shake_tween.is_running():

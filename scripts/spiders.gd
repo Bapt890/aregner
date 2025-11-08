@@ -33,8 +33,11 @@ func _ready():
 		_update_visual(i)
 func _process(delta: float):
 	if Input.is_action_pressed("use"):
-			SignalBus.emit_signal("use", "low")
+		SignalBus.emit_signal("use", "low")
 	await get_tree().create_timer(use_duration).timeout
+	
+	var all_finished = true
+	
 	for i in spider_count:
 		delays[i] = max(0, delays[i] - delta)
 		
@@ -47,23 +50,32 @@ func _process(delta: float):
 					positions[i] = targets[i]
 					is_jumping[i] = false
 				else:
+					all_finished = false
 					var t = jump_progress[i]
 					positions[i] = jump_start_pos[i].lerp(targets[i], t)
 					
 					var jump_offset = sin(t * PI) * jump_height
 					positions[i].y -= jump_offset
 			else:
-				# Mouvement classique
-				positions[i] = positions[i].move_toward(targets[i], move_speed * delta)
+				var distance = positions[i].distance_to(targets[i])
+				if distance > 1.0:
+					all_finished = false
+					positions[i] = positions[i].move_toward(targets[i], move_speed * delta)
+		else:
+			all_finished = false
 		
 		_update_visual(i)
+	
+	# Stop sound when all spiders have finished
+	if all_finished and move_sound.playing:
+		move_sound.stop()
 func _update_visual(i: int):
 	var transform = Transform2D(0, Vector2(spider_scale, -spider_scale), 0, positions[i])
 	multimesh.set_instance_transform_2d(i, transform)
 	
 func _on_possess(object: String, pos: Vector2) -> void:
 	var use_jump = (object != "none")
-	
+	move_sound.play()
 	for i in spider_count:
 		delays[i] = randf() * 0.5
 		targets[i] = pos + Vector2(randf_range(-_get_spread(), _get_spread()), randf_range(-_get_spread(), _get_spread()))
@@ -76,10 +88,10 @@ func _on_possess(object: String, pos: Vector2) -> void:
 			eject_positions[i] = positions[i]
 		else:
 			is_jumping[i] = false
+
 func _on_use(intensity: String) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if current_time - last_use_time < use_cooldown:
-		move_sound.play()
 		return
 	last_use_time = current_time
 	
@@ -117,6 +129,7 @@ func update_spider_count():
 		jump_start_pos.resize(new_count)
 		is_jumping.resize(new_count)
 		eject_positions.resize(new_count)
-func _input(event: InputEvent):
-	if event is InputEventMouseButton and event.pressed:
+
+func _on_move_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+	if event is InputEventMouseButton:
 		_on_possess("none", get_global_mouse_position())
