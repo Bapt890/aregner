@@ -11,13 +11,10 @@ config_version=5
 [application]
 
 config/name="aegner"
-<<<<<<< Updated upstream
-run/main_scene="uid://8io18nqqvmfo"
-=======
 run/main_scene="uid://dftqgscgou0po"
->>>>>>> Stashed changes
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
+<<<<<<<Updatedupstreamrun/main_scene="uid://8io18nqqvmfo"
 
 [autoload]
 

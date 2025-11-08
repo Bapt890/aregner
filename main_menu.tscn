@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://8io18nqqvmfo"]
+[gd_scene load_steps=2 format=3 uid="uid://dvbgk030ern5w"]
 
 [ext_resource type="Script" uid="uid://baexcjuo2kr5w" path="res://main_menu.gd" id="1_06t4h"]
 
@@ -8,33 +8,27 @@ script = ExtResource("1_06t4h")
 [node name="button_manager" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 1147.0
+offset_bottom = 648.0
 
-[node name="start" type="Button" parent="button_manager"]
-layout_mode = 0
-offset_left = 379.0
-offset_top = 159.0
-offset_right = 692.0
-offset_bottom = 267.0
+[node name="VBoxContainer" type="VBoxContainer" parent="button_manager"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 473.0
+offset_right = -473.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="start" type="Button" parent="button_manager/VBoxContainer"]
+layout_mode = 2
 text = "START"
 
-[node name="options" type="Button" parent="button_manager"]
-layout_mode = 0
-offset_left = 381.0
-offset_top = 279.0
-offset_right = 692.0
-offset_bottom = 387.0
-text = "OPTIONS"
-
-[node name="quit" type="Button" parent="button_manager"]
-layout_mode = 0
-offset_left = 381.0
-offset_top = 406.0
-offset_right = 692.0
-offset_bottom = 513.0
+[node name="quit" type="Button" parent="button_manager/VBoxContainer"]
+layout_mode = 2
 text = "QUIT"
 
-[connection signal="pressed" from="button_manager/start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="button_manager/options" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="button_manager/quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="button_manager/VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="button_manager/VBoxContainer/quit" to="." method="_on_quit_pressed"]
