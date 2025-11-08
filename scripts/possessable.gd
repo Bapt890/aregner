@@ -48,6 +48,12 @@ func on_use(level):
 			start_shake()
 		else:
 			self.play("use")
+			if has_node("PointLight2D"):
+				var point_light = $PointLight2D
+				point_light.visible = true
+				await self.animation_finished
+				point_light.visible = false
+		Globals.current_object = "none"
 
 func start_shake():
 	if shake_tween and shake_tween.is_running():
@@ -61,7 +67,7 @@ func start_shake():
 	var step_time = shake_time / max(1, shake_steps)
 	for i in range(shake_steps):
 		var off = Vector2(randf_range(-shake_strength, shake_strength),
-						  randf_range(-shake_strength, shake_strength))
+		randf_range(-shake_strength, shake_strength))
 		var rot = randf_range(-shake_angle, shake_angle)
 		shake_tween.tween_property(self, "position", base_pos + off, step_time * 0.7)
 		shake_tween.parallel().tween_property(self, "rotation", rot, step_time * 0.7)

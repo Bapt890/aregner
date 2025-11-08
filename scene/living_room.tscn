@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://da61awedesxjv"]
+[gd_scene load_steps=40 format=3 uid="uid://da61awedesxjv"]
 
 [ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_78gxd"]
 [ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="2_blbhe"]
@@ -9,8 +9,12 @@
 [ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="4_lq2bk"]
 [ext_resource type="Texture2D" uid="uid://ctk0tbdul3naj" path="res://assets/living room/salon_gueridon.png" id="5_7k7mp"]
 [ext_resource type="Texture2D" uid="uid://dq0lyn0hj1l0p" path="res://assets/living room/salon_canape.png" id="6_oh8xf"]
+[ext_resource type="AudioStream" uid="uid://bhywv65m3oipk" path="res://assets/SFX/salon/livres.ogg" id="6_q1dfd"]
 [ext_resource type="Texture2D" uid="uid://cknx3opnwbxxd" path="res://assets/living room/salon_tv.png" id="7_w5tvh"]
-[ext_resource type="Texture2D" uid="uid://cscvqaaqh68eh" path="res://assets/living room/salon_lampe.png" id="8_xijsw"]
+[ext_resource type="Texture2D" uid="uid://6qwk0oefloy1" path="res://assets/living room/salon_tvneige.png" id="12_uc01h"]
+[ext_resource type="AudioStream" uid="uid://coscfff7h8gtm" path="res://assets/SFX/salon/tv_noise.mp3" id="13_ppxhu"]
+[ext_resource type="Texture2D" uid="uid://cj3vsmgay3uri" path="res://assets/living room/salon_lampeoff.png" id="14_ppxhu"]
+[ext_resource type="Texture2D" uid="uid://dte4r5os58hrx" path="res://assets/living room/salon_lampeon.png" id="15_211va"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_5xjjf"]
 
@@ -125,11 +129,157 @@ animations = [{
 }],
 "loop": false,
 "name": &"use",
-"speed": 3.0
+"speed": 6.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cb6sc"]
 size = Vector2(172, 435)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppxhu"]
+shader = ExtResource("2_cb6sc")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.3000000000029104
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
+shader_parameter/speed = 1.0
+shader_parameter/line_width = 0.15
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/pause_duration = 4.0
+shader_parameter/offset = 2.0
+shader_parameter/pixelate_line = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7sy5"]
+atlas = ExtResource("7_w5tvh")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riy2r"]
+atlas = ExtResource("7_w5tvh")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trrcs"]
+atlas = ExtResource("12_uc01h")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ug0"]
+atlas = ExtResource("7_w5tvh")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcnva"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7sy5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riy2r")
+}],
+"loop": true,
+"name": &"possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ug0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ug0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ug0")
+}],
+"loop": false,
+"name": &"use",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xplcm"]
+size = Vector2(234, 285)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_211va"]
+shader = ExtResource("2_cb6sc")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.3000000000029104
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
+shader_parameter/speed = 1.0
+shader_parameter/line_width = 0.15
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/pause_duration = 4.0
+shader_parameter/offset = 2.0
+shader_parameter/pixelate_line = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcnva"]
+atlas = ExtResource("14_ppxhu")
+region = Rect2(0, 0, 86, 287)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xplcm"]
+atlas = ExtResource("15_211va")
+region = Rect2(0, 0, 86, 287)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_essuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcnva")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ppxhu")
+}],
+"loop": true,
+"name": &"possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xplcm")
+}],
+"loop": false,
+"name": &"use",
+"speed": 0.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr5s"]
+size = Vector2(89, 302)
+
+[sub_resource type="Gradient" id="Gradient_x8o5v"]
+offsets = PackedFloat32Array(0, 0.5466667)
+colors = PackedColorArray(0.8901961, 0.73333335, 0.5411765, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hqbib"]
+gradient = SubResource("Gradient_x8o5v")
+fill = 1
+fill_from = Vector2(0.45327103, 0.47196263)
 
 [node name="LivingRoom" type="Node2D"]
 
@@ -137,6 +287,7 @@ size = Vector2(172, 435)
 texture = ExtResource("1_78gxd")
 
 [node name="SalonBibliotheque" type="AnimatedSprite2D" parent="."]
+z_index = 1
 material = SubResource("ShaderMaterial_vki7j")
 position = Vector2(-533, -39)
 sprite_frames = SubResource("SpriteFrames_g7sy5")
@@ -151,7 +302,11 @@ position = Vector2(533, 39)
 position = Vector2(-535, -38.5)
 shape = SubResource("RectangleShape2D_cb6sc")
 
+[node name="UsePlayer" type="AudioStreamPlayer" parent="SalonBibliotheque"]
+stream = ExtResource("6_q1dfd")
+
 [node name="SalonMeubletv" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(272, -41)
 texture = ExtResource("3_qupsq")
 
@@ -160,17 +315,62 @@ position = Vector2(136, 115)
 texture = ExtResource("4_lq2bk")
 
 [node name="SalonGueridon" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(13, -150)
 texture = ExtResource("5_7k7mp")
 
 [node name="SalonCanape" type="Sprite2D" parent="."]
+z_index = 1
 position = Vector2(36, 134)
 texture = ExtResource("6_oh8xf")
 
-[node name="SalonTv" type="Sprite2D" parent="."]
+[node name="SalonTv" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_ppxhu")
 position = Vector2(290, -207)
-texture = ExtResource("7_w5tvh")
+sprite_frames = SubResource("SpriteFrames_jcnva")
+animation = &"use"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("3_r3bpu")
+object_name = "TV"
 
-[node name="SalonLampe" type="Sprite2D" parent="."]
+[node name="Area2D" type="Area2D" parent="SalonTv"]
+position = Vector2(533, 39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalonTv/Area2D"]
+position = Vector2(-541, -50.5)
+shape = SubResource("RectangleShape2D_xplcm")
+
+[node name="UsePlayer" type="AudioStreamPlayer" parent="SalonTv"]
+stream = ExtResource("13_ppxhu")
+
+[node name="SalonLampe" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_211va")
 position = Vector2(451, 6)
-texture = ExtResource("8_xijsw")
+sprite_frames = SubResource("SpriteFrames_essuy")
+animation = &"use"
+script = ExtResource("3_r3bpu")
+object_name = "Lamp"
+
+[node name="Area2D" type="Area2D" parent="SalonLampe"]
+position = Vector2(533, 39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalonLampe/Area2D"]
+visible = false
+position = Vector2(-538.5, -42)
+shape = SubResource("RectangleShape2D_lhr5s")
+
+[node name="UsePlayer" type="AudioStreamPlayer" parent="SalonLampe"]
+stream = ExtResource("13_ppxhu")
+
+[node name="PointLight2D" type="PointLight2D" parent="SalonLampe"]
+visible = false
+z_index = 2
+position = Vector2(-4, -96)
+color = Color(0.950193, 0.86310005, 0.7596254, 1)
+energy = 2.4
+blend_mode = 2
+texture = SubResource("GradientTexture2D_hqbib")
+texture_scale = 10.0
