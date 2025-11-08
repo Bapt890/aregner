@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dw6gy483dvdhd"
+path="res://.godot/imported/shower.mp3-b4d6601bbb89dd59db7e6ec666ca290f.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/salle de bain/shower.mp3"
+dest_files=["res://.godot/imported/shower.mp3-b4d6601bbb89dd59db7e6ec666ca290f.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
