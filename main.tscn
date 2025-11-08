@@ -1,11 +1,26 @@
-[gd_scene load_steps=11 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=22 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
+[ext_resource type="Shader" uid="uid://bshk4faur55p" path="res://scripts/shaders/squiggle.gdshader" id="1_kek77"]
 [ext_resource type="Texture2D" uid="uid://bqnn1m8fx08fe" path="res://assets/spider.png" id="2_0xm2m"]
 [ext_resource type="Shader" uid="uid://bwnenq6js1y5x" path="res://scripts/shaders/outline.gdshader" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cpfdukjr0hajs" path="res://assets/objects/toaster.png" id="4_7mycd"]
-[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possesable.gd" id="5_272bh"]
+[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_272bh"]
+[ext_resource type="Texture2D" uid="uid://dje2r508gjsg8" path="res://assets/objects/salon_tv.png" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://bxbiobssdnvdc" path="res://scripts/fear_meter.gd" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://d17hmm0bwkb58" path="res://assets/objects/salon_tvneige.png" id="7_kek77"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_4c57u"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_efxa6"]
+noise = SubResource("FastNoiseLite_4c57u")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_dg77c"]
+shader = ExtResource("1_kek77")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 1.0
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_efxa6")
 
 [sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
 
@@ -17,20 +32,63 @@ buffer = PackedFloat32Array(0, 4.9999995, 0.021375, 0.149625, 0.18524998, 1, 0, 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
 shader = ExtResource("3_lquwl")
 shader_parameter/allow_out_of_bounds = true
-shader_parameter/outline_thickness = 50.0
+shader_parameter/outline_thickness = 5.0
 shader_parameter/outline_color = Color(1, 1, 1, 1)
 shader_parameter/sample_quality = 8
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
-size = Vector2(2139.5322, 1890.2661)
+size = Vector2(231, 300)
+
+[sub_resource type="Animation" id="Animation_efxa6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_5vw27")]
+}
+
+[sub_resource type="Animation" id="Animation_kek77"]
+
+[sub_resource type="Animation" id="Animation_4c57u"]
+resource_name = "interact"
+step = 0.0333333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("7_kek77")]
+}
+
+[sub_resource type="Animation" id="Animation_5vw27"]
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dg77c"]
+_data = {
+&"RESET": SubResource("Animation_efxa6"),
+&"high": SubResource("Animation_kek77"),
+&"low": SubResource("Animation_4c57u"),
+&"medium": SubResource("Animation_5vw27")
+}
 
 [node name="Main" type="Node2D"]
 
 [node name="LivingRoom" type="Camera2D" parent="."]
-
-[node name="Kitchen" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="spiders" type="MultiMeshInstance2D" parent="."]
+material = SubResource("ShaderMaterial_dg77c")
 multimesh = SubResource("MultiMesh_lquwl")
 texture = ExtResource("2_0xm2m")
 script = ExtResource("1_ig7tw")
@@ -41,34 +99,65 @@ position = Vector2(348, -131)
 scale = Vector2(0.096282735, 0.09628276)
 texture = ExtResource("4_7mycd")
 script = ExtResource("5_272bh")
+object_name = "toaster"
 
 [node name="Area2D" type="Area2D" parent="Toaster"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Toaster/Area2D"]
 shape = SubResource("RectangleShape2D_lquwl")
 
-[node name="Toaster2" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5vw27")
-position = Vector2(348, -131)
-scale = Vector2(0.096282735, 0.09628276)
-texture = ExtResource("4_7mycd")
+[node name="TV" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_dg77c")
+position = Vector2(-128.75, -7)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("6_5vw27")
 script = ExtResource("5_272bh")
+hover_strength_size = 0.8000000000029104
+object_name = "TV"
+shake_angle = 0.5
+shake_steps = 12
 
-[node name="Area2D" type="Area2D" parent="Toaster2"]
+[node name="Area2D" type="Area2D" parent="TV"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Toaster2/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TV/Area2D"]
 shape = SubResource("RectangleShape2D_lquwl")
 
+[node name="ObjectAnimation" type="AnimationPlayer" parent="TV"]
+libraries = {
+&"": SubResource("AnimationLibrary_dg77c")
+}
+
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -462.0
-offset_right = 466.0
-offset_bottom = 27.0
+offset_left = -463.0
+offset_top = -307.0
+offset_right = 465.0
+offset_bottom = -280.0
 script = ExtResource("6_7mycd")
 metadata/_edit_use_anchors_ = true
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="InteractionSelector" type="VBoxContainer" parent="."]
+offset_left = -27.263336
+offset_top = -50.875076
+offset_right = 34.736664
+offset_bottom = 50.124924
+
+[node name="Button" type="Button" parent="InteractionSelector"]
+layout_mode = 2
+text = "Faible"
+
+[node name="Button2" type="Button" parent="InteractionSelector"]
+layout_mode = 2
+text = "Moyen"
+
+[node name="Button3" type="Button" parent="InteractionSelector"]
+layout_mode = 2
+text = "Phobie"
 
 [connection signal="input_event" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_exited"]
-[connection signal="input_event" from="Toaster2/Area2D" to="Toaster2" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Toaster2/Area2D" to="Toaster2" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Toaster2/Area2D" to="Toaster2" method="_on_area_2d_mouse_exited"]
+[connection signal="input_event" from="TV/Area2D" to="TV" method="_on_area_2d_input_event"]
+[connection signal="mouse_entered" from="TV/Area2D" to="TV" method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TV/Area2D" to="TV" method="_on_area_2d_mouse_exited"]

@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://ml10b765ath5"
+path="res://.godot/imported/water_drop.mp3-22912fb8e18d1597f7ae55ed63810b02.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/salle de bain/water_drop.mp3"
+dest_files=["res://.godot/imported/water_drop.mp3-22912fb8e18d1597f7ae55ed63810b02.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

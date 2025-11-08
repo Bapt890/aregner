@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dqmvttrnhcb5d"
+path="res://.godot/imported/interupteur on.mp3-e91913bf3d2b4a8e2804ab17dfdf9847.mp3str"
+
+[deps]
+
+source_file="res://assets/SFX/salle de bain/interupteur on.mp3"
+dest_files=["res://.godot/imported/interupteur on.mp3-e91913bf3d2b4a8e2804ab17dfdf9847.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

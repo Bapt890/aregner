@@ -2,7 +2,7 @@ extends Node
 
 signal fear_changed(current, change)
 signal panic_triggered
-
+var current_object = "none"
 var fear = 0
 var max_fear = 100
 var panic_limit = 30
