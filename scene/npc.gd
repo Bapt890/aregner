@@ -1,6 +1,7 @@
 extends Node2D
 
 enum State {IDLE, WALK, INSPECT, CALL, TRAPPED}
+enum Direction {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
 
 const speed = 1000
 # The destination to go to
@@ -10,6 +11,7 @@ var current_destination : Destination = null
 var sighted_objects : Array
 # Used for State Base Machine
 var current_state = State.IDLE
+var current_direction = Direction.UPLEFT
 # Used to check movement
 var previous_pos : Vector2 = Vector2.ZERO
 var doing_job: bool = false
@@ -29,16 +31,25 @@ func _process(delta):
 				else: 
 					current_destination = target
 					target = target.get_random_destination()
+					current_direction = current_destination.get_direction(target)
 					go_to()
 			previous_pos = position
 		State.IDLE:
+			# Stops to do its job, if any
 			if doing_job:
 				doing_job = false
+				current_direction = current_destination.get_job_orientation()
 				current_destination.start_job()
 				await current_destination.end_job
 				target = current_destination.get_random_destination()
+				current_direction = current_destination.get_direction(target)
 			# If it has a target, goes to it
 			elif target: go_to()
+	match current_direction:
+		Direction.UPLEFT: $SightArea/CollisionPolygon2D.rotation_degrees = 135
+		Direction.UPRIGHT: $SightArea/CollisionPolygon2D.rotation_degrees = 225
+		Direction.DOWNLEFT: $SightArea/CollisionPolygon2D.rotation_degrees = 45
+		Direction.DOWNRIGHT: $SightArea/CollisionPolygon2D.rotation_degrees = 315
 
 func wait_job():
 	target.start_job()

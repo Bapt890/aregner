@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://bqnn1m8fx08fe" path="res://assets/spider.png" id="2_0xm2m"]
-[ext_resource type="PackedScene" uid="uid://lwbm555q4l6v" path="res://scene/npc.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cwf5gvmexs21b" path="res://npc.tscn" id="2_kek77"]
 [ext_resource type="PackedScene" uid="uid://dcv6rxbagi8t0" path="res://scene/destination.tscn" id="3_kek77"]
 [ext_resource type="Shader" uid="uid://bwnenq6js1y5x" path="res://scripts/shaders/outline.gdshader" id="3_lquwl"]
 [ext_resource type="Texture2D" uid="uid://cpfdukjr0hajs" path="res://assets/objects/toaster.png" id="4_7mycd"]
-[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possesable.gd" id="5_272bh"]
+[ext_resource type="Script" path="res://scripts/possesable.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://bxbiobssdnvdc" path="res://scripts/fear_meter.gd" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bch6810psuy0p" path="res://scene/living_room.tscn" id="7_272bh"]
 
@@ -33,7 +33,7 @@ size = Vector2(2139.5322, 1890.2661)
 
 [node name="NPC" type="Node" parent="."]
 
-[node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
+[node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_kek77")]
 target = NodePath("../Destinations/Destination")
 
 [node name="Destinations" type="Node" parent="NPC"]
@@ -42,21 +42,25 @@ target = NodePath("../Destinations/Destination")
 position = Vector2(-430, 161)
 cause_stop = true
 stop_duration = 2
+target_orientation = Array[int]([3, 1, 1])
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination3"), NodePath("../Destination4")]
 
 [node name="Destination2" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
 position = Vector2(-10, 392)
 orientation = 3
+target_orientation = Array[int]([0, 0, 1])
 linked_destinations = [NodePath("../Destination"), NodePath("../Destination3"), NodePath("../Destination4")]
 
 [node name="Destination3" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(178, 159)
+position = Vector2(405, 175)
 orientation = 3
+target_orientation = Array[int]([2, 0, 0])
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination4")]
 
 [node name="Destination4" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-276, 67)
+position = Vector2(-70, -79)
 orientation = 3
+target_orientation = Array[int]([3, 2, 3])
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination3")]
 
 [node name="Camera" type="Camera2D" parent="."]
