@@ -1,0 +1,376 @@
+[gd_scene load_steps=40 format=3 uid="uid://dmo6ch2xreba2"]
+
+[ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_6utvc"]
+[ext_resource type="Shader" uid="uid://bshk4faur55p" path="res://scripts/shaders/squiggle.gdshader" id="2_2uuqs"]
+[ext_resource type="Texture2D" uid="uid://cfs6ouh4nwmo6" path="res://assets/living room/salon_bibliotheque_normal.png" id="3_mogh0"]
+[ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="4_j7inc"]
+[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_weu2t"]
+[ext_resource type="AudioStream" uid="uid://bhywv65m3oipk" path="res://assets/SFX/salon/livres.ogg" id="6_mj6ii"]
+[ext_resource type="Texture2D" uid="uid://dtd56vblvdogx" path="res://assets/living room/salon_meubletv.png" id="7_joy5l"]
+[ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="8_s8sbf"]
+[ext_resource type="Texture2D" uid="uid://ctk0tbdul3naj" path="res://assets/living room/salon_gueridon.png" id="9_nrb5j"]
+[ext_resource type="Texture2D" uid="uid://dq0lyn0hj1l0p" path="res://assets/living room/salon_canape.png" id="10_is08k"]
+[ext_resource type="Texture2D" uid="uid://cknx3opnwbxxd" path="res://assets/living room/salon_tv.png" id="11_5m0m6"]
+[ext_resource type="Texture2D" uid="uid://6qwk0oefloy1" path="res://assets/living room/salon_tvneige.png" id="12_wvrob"]
+[ext_resource type="AudioStream" uid="uid://coscfff7h8gtm" path="res://assets/SFX/salon/tv_noise.mp3" id="13_vi1qt"]
+[ext_resource type="Texture2D" uid="uid://cj3vsmgay3uri" path="res://assets/living room/salon_lampeoff.png" id="14_e8d8u"]
+[ext_resource type="Texture2D" uid="uid://dte4r5os58hrx" path="res://assets/living room/salon_lampeon.png" id="15_ppm0j"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_5xjjf"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1dfd"]
+noise = SubResource("FastNoiseLite_5xjjf")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vki7j"]
+shader = ExtResource("2_2uuqs")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.3000000000029104
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
+shader_parameter/speed = 1.0
+shader_parameter/line_width = 0.15
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/pause_duration = 4.0
+shader_parameter/offset = 2.0
+shader_parameter/pixelate_line = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1dfd"]
+atlas = ExtResource("3_mogh0")
+region = Rect2(0, 0, 178, 438)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vki7j"]
+atlas = ExtResource("4_j7inc")
+region = Rect2(0, 0, 245, 470)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uc01h"]
+atlas = ExtResource("4_j7inc")
+region = Rect2(0, 0, 245, 470)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppxhu"]
+atlas = ExtResource("4_j7inc")
+region = Rect2(245, 0, 245, 470)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_211va"]
+atlas = ExtResource("4_j7inc")
+region = Rect2(490, 0, 245, 470)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7sy5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q1dfd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vki7j")
+}],
+"loop": true,
+"name": &"possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211va")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uc01h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppxhu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_211va")
+}],
+"loop": false,
+"name": &"use",
+"speed": 6.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cb6sc"]
+size = Vector2(172, 435)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ppxhu"]
+shader = ExtResource("2_2uuqs")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.3000000000029104
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
+shader_parameter/speed = 1.0
+shader_parameter/line_width = 0.15
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/pause_duration = 4.0
+shader_parameter/offset = 2.0
+shader_parameter/pixelate_line = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g7sy5"]
+atlas = ExtResource("11_5m0m6")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_riy2r"]
+atlas = ExtResource("11_5m0m6")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trrcs"]
+atlas = ExtResource("12_wvrob")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8ug0"]
+atlas = ExtResource("11_5m0m6")
+region = Rect2(0, 0, 217, 296)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jcnva"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g7sy5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_riy2r")
+}],
+"loop": true,
+"name": &"possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ug0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ug0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8ug0")
+}],
+"loop": false,
+"name": &"use",
+"speed": 4.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xplcm"]
+size = Vector2(234, 285)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_211va"]
+shader = ExtResource("2_2uuqs")
+shader_parameter/scale = Vector2(1, 1)
+shader_parameter/strength = 0.3000000000029104
+shader_parameter/fps = 6.0
+shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
+shader_parameter/speed = 1.0
+shader_parameter/line_width = 0.15
+shader_parameter/line_color = Color(1, 1, 1, 1)
+shader_parameter/pause_duration = 4.0
+shader_parameter/offset = 2.0
+shader_parameter/pixelate_line = 1
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jcnva"]
+atlas = ExtResource("14_e8d8u")
+region = Rect2(0, 0, 86, 287)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xplcm"]
+atlas = ExtResource("15_ppm0j")
+region = Rect2(0, 0, 86, 287)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_essuy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jcnva")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_e8d8u")
+}],
+"loop": true,
+"name": &"possessed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xplcm")
+}],
+"loop": false,
+"name": &"use",
+"speed": 0.5
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lhr5s"]
+size = Vector2(89, 302)
+
+[sub_resource type="Gradient" id="Gradient_x8o5v"]
+offsets = PackedFloat32Array(0, 0.5466667)
+colors = PackedColorArray(0.8901961, 0.73333335, 0.5411765, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hqbib"]
+gradient = SubResource("Gradient_x8o5v")
+fill = 1
+fill_from = Vector2(0.45327103, 0.47196263)
+
+[node name="LivingRoom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_6utvc")
+
+[node name="SalonBibliotheque" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_vki7j")
+position = Vector2(-533, -39)
+sprite_frames = SubResource("SpriteFrames_g7sy5")
+animation = &"use"
+script = ExtResource("5_weu2t")
+object_name = "Bookshelf"
+
+[node name="Area2D" type="Area2D" parent="SalonBibliotheque"]
+position = Vector2(533, 39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalonBibliotheque/Area2D"]
+position = Vector2(-535, -38.5)
+shape = SubResource("RectangleShape2D_cb6sc")
+
+[node name="UsePlayer" type="AudioStreamPlayer" parent="SalonBibliotheque"]
+stream = ExtResource("6_mj6ii")
+
+[node name="SalonMeubletv" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(272, -41)
+texture = ExtResource("7_joy5l")
+
+[node name="SalonTapis" type="Sprite2D" parent="."]
+position = Vector2(136, 115)
+texture = ExtResource("8_s8sbf")
+
+[node name="SalonGueridon" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(13, -150)
+texture = ExtResource("9_nrb5j")
+
+[node name="SalonCanape" type="Sprite2D" parent="."]
+z_index = 1
+position = Vector2(36, 134)
+texture = ExtResource("10_is08k")
+
+[node name="SalonTv" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_ppxhu")
+position = Vector2(290, -207)
+sprite_frames = SubResource("SpriteFrames_jcnva")
+animation = &"use"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("5_weu2t")
+object_name = "TV"
+
+[node name="Area2D" type="Area2D" parent="SalonTv"]
+position = Vector2(533, 39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalonTv/Area2D"]
+position = Vector2(-541, -50.5)
+shape = SubResource("RectangleShape2D_xplcm")
+
+[node name="UsePlayer" type="AudioStreamPlayer" parent="SalonTv"]
+stream = ExtResource("13_vi1qt")
+
+[node name="SalonLampe" type="AnimatedSprite2D" parent="."]
+z_index = 1
+material = SubResource("ShaderMaterial_211va")
+position = Vector2(451, 6)
+sprite_frames = SubResource("SpriteFrames_essuy")
+autoplay = "default"
+script = ExtResource("5_weu2t")
+object_name = "Lamp"
+
+[node name="Area2D" type="Area2D" parent="SalonLampe"]
+position = Vector2(533, 39)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SalonLampe/Area2D"]
+visible = false
+position = Vector2(-538.5, -42)
+shape = SubResource("RectangleShape2D_lhr5s")
+
+[node name="UsePlayer" type="AudioStreamPlayer" parent="SalonLampe"]
+stream = ExtResource("13_vi1qt")
+
+[node name="PointLight2D" type="PointLight2D" parent="SalonLampe"]
+visible = false
+z_index = 2
+position = Vector2(-4, -96)
+color = Color(0.950193, 0.86310005, 0.7596254, 1)
+energy = 2.4
+blend_mode = 2
+texture = SubResource("GradientTexture2D_hqbib")
+texture_scale = 10.0
