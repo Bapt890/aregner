@@ -35,12 +35,6 @@ multimesh = SubResource("MultiMesh_lquwl")
 texture = ExtResource("2_0xm2m")
 script = ExtResource("1_ig7tw")
 
-[node name="HSlider" type="HSlider" parent="."]
-offset_left = -250.0
-offset_top = -252.0
-offset_right = 252.0
-offset_bottom = -236.0
-
 [node name="Toaster" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_5vw27")
 position = Vector2(348, -131)
@@ -70,8 +64,8 @@ offset_left = -462.0
 offset_right = 466.0
 offset_bottom = 27.0
 script = ExtResource("6_7mycd")
+metadata/_edit_use_anchors_ = true
 
-[connection signal="value_changed" from="HSlider" to="spiders" method="update_spider_count"]
 [connection signal="input_event" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_input_event"]
 [connection signal="mouse_entered" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_exited"]

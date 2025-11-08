@@ -4,3 +4,8 @@
 
 [node name="Globals" type="Node"]
 script = ExtResource("1_b1y8s")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 299.99999999999994
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

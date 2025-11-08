@@ -11,11 +11,13 @@ var targets = []
 
 func _ready():
 	SignalBus.possess.connect(_on_possess)
+	SignalBus.fear_changed.connect(update_spider_count)
 	for i in spider_count:
 		positions.append(Vector2(randf_range(-_get_spread(), _get_spread()), randf_range(-_get_spread(), _get_spread())))
 		delays.append(0.0)
 		targets.append(Vector2.ZERO)
 		_update_visual(i)
+		
 
 func _process(delta: float):
 	for i in spider_count:
@@ -36,8 +38,9 @@ func _on_possess(object: String, pos: Vector2) -> void:
 func _get_spread() -> float:
 	return base_spread * sqrt(spider_count / 30.0)
 
-func update_spider_count(new_count: int):
+func update_spider_count():
 	var old_count = spider_count
+	var new_count = Globals.fear
 	spider_count = new_count
 	multimesh.instance_count = new_count
 	
@@ -52,3 +55,7 @@ func update_spider_count(new_count: int):
 		positions.resize(new_count)
 		delays.resize(new_count)
 		targets.resize(new_count)
+
+func _input(event: InputEvent):
+	if event is InputEventMouseButton and event.pressed:
+		_on_possess("none", get_global_mouse_position())
