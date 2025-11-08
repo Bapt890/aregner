@@ -1,5 +1,6 @@
-[gd_scene load_steps=14 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=10 format=3 uid="uid://dftqgscgou0po"]
 
+[ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://bqnn1m8fx08fe" path="res://assets/spider.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://cwf5gvmexs21b" path="res://npc.tscn" id="2_kek77"]
@@ -8,26 +9,17 @@
 [ext_resource type="Texture2D" uid="uid://cpfdukjr0hajs" path="res://assets/objects/toaster.png" id="4_7mycd"]
 [ext_resource type="Script" path="res://scripts/possesable.gd" id="5_272bh"]
 [ext_resource type="Script" uid="uid://bxbiobssdnvdc" path="res://scripts/fear_meter.gd" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://bch6810psuy0p" path="res://scene/living_room.tscn" id="7_272bh"]
+[ext_resource type="PackedScene" uid="uid://da61awedesxjv" path="res://scene/living_room.tscn" id="7_272bh"]
 
-[sub_resource type="QuadMesh" id="QuadMesh_0xm2m"]
-
-[sub_resource type="MultiMesh" id="MultiMesh_lquwl"]
-instance_count = 30
-mesh = SubResource("QuadMesh_0xm2m")
-buffer = PackedFloat32Array(0, 4.9999995, 0.021375, 0.149625, 0.18524998, 1, 0, 0.005847953, 0.38060236, 3.086583, 0.021375, 0.149625, 0.18524998, 1, 0.0014526808, 0.0036100384, 1.4644659, 1.4644666, 0.021375, 0.149625, 0.18524998, 1, 0.0055895643, 0.0017128264, 3.0865822, 0.38060236, 0.021375, 0.149625, 0.18524998, 1, 0.011780848, 0.00044514897, 5, 0, 0.021375, 0.149625, 0.18524998, 1, 0.01908397, 0, 257, 0, 0.021375, 0.149625, 0.18524998, 1, 0.980916, 0, 258.91342, 0.38060284, 0.021375, 0.149625, 0.18524998, 1, 0.98821914, 0.00044514952, 260.53552, 1.4644656, 0.021375, 0.149625, 0.18524998, 1, 0.9944104, 0.0017128253, 261.6194, 3.086583, 0.021375, 0.149625, 0.18524998, 1, 0.99854726, 0.0036100384, 262, 5.000001, 0.021375, 0.149625, 0.18524998, 1, 1, 0.005847954, 262, 850, 0.021375, 0.149625, 0.18524998, 1, 1, 0.99415207, 261.6194, 851.9134, 0.021375, 0.149625, 0.18524998, 1, 0.99854726, 0.9963899, 260.53552, 853.5355, 0.021375, 0.149625, 0.18524998, 1, 0.9944104, 0.99828714, 258.91342, 854.6194, 0.021375, 0.149625, 0.18524998, 1, 0.98821914, 0.9995548, 257, 855, 0.021375, 0.149625, 0.18524998, 1, 0.980916, 1, 4.999998, 855, 0.021375, 0.149625, 0.18524998, 1, 0.019083962, 1, 3.0865805, 854.6194, 0.021375, 0.149625, 0.18524998, 1, 0.011780841, 0.9995548, 1.464467, 853.5355, 0.021375, 0.149625, 0.18524998, 1, 0.005589569, 0.99828714, 0.38060236, 851.9134, 0.021375, 0.149625, 0.18524998, 1, 0.0014526808, 0.9963899, 0, 850, 0.021375, 0.149625, 0.18524998, 1, 0, 0.99415207, 0, 2.5e-44, 1e-45, 0, 2.7e-44, 2.5e-44, 1e-45, 2.4e-44, 3e-45, 1e-45, 2.5e-44, 2.4e-44, 3e-45, 2.2e-44, 4e-45, 3e-45, 2.4e-44, 2.2e-44, 4e-45, 2.1e-44, 6e-45, 4e-45, 2.2e-44, 2.1e-44, 6e-45, 2e-44, 7e-45, 6e-45, 2.1e-44, 2e-44, 7e-45, 1.8e-44, 8e-45, 7e-45, 2e-44, 1.8e-44, 8e-45, 1.7e-44, 1e-44, 8e-45, 1.8e-44, 1.7e-44, 1e-44, 1.5e-44, 1.1e-44, 1e-44, 1.7e-44, 1.5e-44, 1.1e-44, 1.4e-44, 1.3e-44, 1.1e-44, 1.5e-44, 1.4e-44, 0.9302635, 0.95275915, 17.913416, 30.619398, 0.016199999, 0.1134, 0.14039999, 1, 0.85301983, 0.9877225, 15.999998, 31, 0.016199999, 0.1134, 0.14039999, 1, 0.76190466, 1, 4.999998, 31, 0.016199999, 0.1134, 0.14039999, 1, 0.23809515, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5vw27"]
-shader = ExtResource("3_lquwl")
-shader_parameter/allow_out_of_bounds = true
-shader_parameter/outline_thickness = 50.0
-shader_parameter/outline_color = Color(1, 1, 1, 1)
-shader_parameter/sample_quality = 8
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lquwl"]
-size = Vector2(2139.5322, 1890.2661)
+[sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 
 [node name="Main" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(3.8019753, -6.0000052)
+scale = Vector2(1.4762552, 1.476255)
+texture = ExtResource("1_5vw27")
 
 [node name="LivingRoom" parent="." instance=ExtResource("7_272bh")]
 
@@ -65,49 +57,36 @@ linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), 
 
 [node name="Camera" type="Camera2D" parent="."]
 
-[node name="Kitchen" type="Camera2D" parent="."]
-
-[node name="spiders" type="MultiMeshInstance2D" parent="."]
-multimesh = SubResource("MultiMesh_lquwl")
-texture = ExtResource("2_0xm2m")
+[node name="spiders" type="Node2D" parent="." node_paths=PackedStringArray("move_sound", "jump_sound")]
 script = ExtResource("1_ig7tw")
+spider_count = 5
+base_spread = 200.0
+spider_scale = 0.6999999999970896
+spritesheet = ExtResource("2_0xm2m")
+move_sound = NodePath("MovePlayer")
+jump_sound = NodePath("JumpPlayer")
 
-[node name="Toaster" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5vw27")
-position = Vector2(348, -131)
-scale = Vector2(0.096282735, 0.09628276)
-texture = ExtResource("4_7mycd")
-script = ExtResource("5_272bh")
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="spiders"]
 
-[node name="Area2D" type="Area2D" parent="Toaster"]
+[node name="MovePlayer" type="AudioStreamPlayer" parent="spiders"]
+stream = ExtResource("4_kek77")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Toaster/Area2D"]
-shape = SubResource("RectangleShape2D_lquwl")
+[node name="MoveArea" type="Area2D" parent="spiders"]
 
-[node name="Toaster2" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_5vw27")
-position = Vector2(348, -131)
-scale = Vector2(0.096282735, 0.09628276)
-texture = ExtResource("4_7mycd")
-script = ExtResource("5_272bh")
-
-[node name="Area2D" type="Area2D" parent="Toaster2"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Toaster2/Area2D"]
-shape = SubResource("RectangleShape2D_lquwl")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spiders/MoveArea"]
+polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
 offset_left = -462.0
+offset_top = -479.0
 offset_right = 466.0
-offset_bottom = 27.0
+offset_bottom = -452.0
 script = ExtResource("6_7mycd")
 metadata/_edit_use_anchors_ = true
 
 [node name="Destination" parent="." instance=ExtResource("3_kek77")]
 
-[connection signal="input_event" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Toaster/Area2D" to="Toaster" method="_on_area_2d_mouse_exited"]
-[connection signal="input_event" from="Toaster2/Area2D" to="Toaster2" method="_on_area_2d_input_event"]
-[connection signal="mouse_entered" from="Toaster2/Area2D" to="Toaster2" method="_on_area_2d_mouse_entered"]
-[connection signal="mouse_exited" from="Toaster2/Area2D" to="Toaster2" method="_on_area_2d_mouse_exited"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_5vw27")
+
+[connection signal="input_event" from="spiders/MoveArea" to="spiders" method="_on_move_area_input_event"]
