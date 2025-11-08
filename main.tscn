@@ -3,11 +3,11 @@
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
 [ext_resource type="Texture2D" uid="uid://bqnn1m8fx08fe" path="res://assets/spider.png" id="2_0xm2m"]
-[ext_resource type="PackedScene" path="res://scene/npc.tscn" id="2_5vw27"]
-[ext_resource type="PackedScene" path="res://scene/destination.tscn" id="3_kek77"]
+[ext_resource type="PackedScene" uid="uid://lwbm555q4l6v" path="res://scene/npc.tscn" id="2_5vw27"]
+[ext_resource type="PackedScene" uid="uid://dmo6ch2xreba2" path="res://living_room.tscn" id="2_kek77"]
+[ext_resource type="PackedScene" uid="uid://dcv6rxbagi8t0" path="res://scene/destination.tscn" id="3_kek77"]
 [ext_resource type="AudioStream" uid="uid://df7tkluxjl5au" path="res://assets/SFX/spider.ogg" id="4_kek77"]
 [ext_resource type="Script" uid="uid://bxbiobssdnvdc" path="res://scripts/fear_meter.gd" id="6_7mycd"]
-[ext_resource type="PackedScene" uid="uid://da61awedesxjv" path="res://scene/living_room.tscn" id="7_272bh"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 
@@ -19,7 +19,7 @@ position = Vector2(3.8019753, -6.0000052)
 scale = Vector2(1.4762552, 1.476255)
 texture = ExtResource("1_5vw27")
 
-[node name="LivingRoom" parent="." instance=ExtResource("7_272bh")]
+[node name="LivingRoom" parent="." instance=ExtResource("2_kek77")]
 
 [node name="NPC" type="Node" parent="."]
 

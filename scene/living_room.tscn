@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://da61awedesxjv"]
+[gd_scene load_steps=40 format=3 uid="uid://c3b2xlsmouq15"]
 
 [ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_78gxd"]
 [ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="2_blbhe"]
 [ext_resource type="Shader" uid="uid://bshk4faur55p" path="res://scripts/shaders/squiggle.gdshader" id="2_cb6sc"]
 [ext_resource type="Texture2D" uid="uid://cfs6ouh4nwmo6" path="res://assets/living room/salon_bibliotheque_normal.png" id="3_5xjjf"]
 [ext_resource type="Texture2D" uid="uid://dtd56vblvdogx" path="res://assets/living room/salon_meubletv.png" id="3_qupsq"]
-[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="3_r3bpu"]
+[ext_resource type="Script" path="res://scripts/possessable.gd" id="3_r3bpu"]
 [ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="4_lq2bk"]
 [ext_resource type="Texture2D" uid="uid://ctk0tbdul3naj" path="res://assets/living room/salon_gueridon.png" id="5_7k7mp"]
 [ext_resource type="Texture2D" uid="uid://dq0lyn0hj1l0p" path="res://assets/living room/salon_canape.png" id="6_oh8xf"]

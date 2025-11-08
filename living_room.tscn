@@ -1,10 +1,10 @@
-[gd_scene load_steps=45 format=3 uid="uid://dmo6ch2xreba2"]
+[gd_scene load_steps=43 format=3 uid="uid://dmo6ch2xreba2"]
 
 [ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_6utvc"]
-[ext_resource type="Shader" uid="uid://bshk4faur55p" path="res://scripts/shaders/squiggle.gdshader" id="2_2uuqs"]
+[ext_resource type="Shader" uid="uid://dyacwyt1jotmf" path="res://glow.gdshader" id="2_j7inc"]
 [ext_resource type="Texture2D" uid="uid://cfs6ouh4nwmo6" path="res://assets/living room/salon_bibliotheque_normal.png" id="3_mogh0"]
 [ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="4_j7inc"]
-[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_weu2t"]
+[ext_resource type="Script" path="res://scripts/possessable.gd" id="5_weu2t"]
 [ext_resource type="AudioStream" uid="uid://bhywv65m3oipk" path="res://assets/SFX/salon/livres.ogg" id="6_mj6ii"]
 [ext_resource type="Texture2D" uid="uid://dtd56vblvdogx" path="res://assets/living room/salon_meubletv.png" id="7_joy5l"]
 [ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="8_s8sbf"]
@@ -18,23 +18,9 @@
 [ext_resource type="Texture2D" uid="uid://r75hx56jw74l" path="res://assets/objects/salon_citrouillewink.png" id="15_j7inc"]
 [ext_resource type="Texture2D" uid="uid://dte4r5os58hrx" path="res://assets/living room/salon_lampeon.png" id="15_ppm0j"]
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_5xjjf"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_q1dfd"]
-noise = SubResource("FastNoiseLite_5xjjf")
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vki7j"]
-shader = ExtResource("2_2uuqs")
-shader_parameter/scale = Vector2(1, 1)
+shader = ExtResource("2_j7inc")
 shader_parameter/strength = 0.3000000000029104
-shader_parameter/fps = 6.0
-shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
-shader_parameter/speed = 1.0
-shader_parameter/line_width = 0.15
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/pause_duration = 4.0
-shader_parameter/offset = 2.0
-shader_parameter/pixelate_line = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_q1dfd"]
 atlas = ExtResource("3_mogh0")
@@ -138,17 +124,8 @@ animations = [{
 size = Vector2(172, 435)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ppxhu"]
-shader = ExtResource("2_2uuqs")
-shader_parameter/scale = Vector2(1, 1)
+shader = ExtResource("2_j7inc")
 shader_parameter/strength = 0.3000000000029104
-shader_parameter/fps = 6.0
-shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
-shader_parameter/speed = 1.0
-shader_parameter/line_width = 0.15
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/pause_duration = 4.0
-shader_parameter/offset = 2.0
-shader_parameter/pixelate_line = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_g7sy5"]
 atlas = ExtResource("11_5m0m6")
@@ -245,17 +222,8 @@ animations = [{
 size = Vector2(141, 139)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_211va"]
-shader = ExtResource("2_2uuqs")
-shader_parameter/scale = Vector2(1, 1)
+shader = ExtResource("2_j7inc")
 shader_parameter/strength = 0.3000000000029104
-shader_parameter/fps = 6.0
-shader_parameter/noise = SubResource("NoiseTexture2D_q1dfd")
-shader_parameter/speed = 1.0
-shader_parameter/line_width = 0.15
-shader_parameter/line_color = Color(1, 1, 1, 1)
-shader_parameter/pause_duration = 4.0
-shader_parameter/offset = 2.0
-shader_parameter/pixelate_line = 1
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_jcnva"]
 atlas = ExtResource("14_e8d8u")
@@ -322,6 +290,7 @@ object_name = "Bookshelf"
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonBibliotheque/Area2D"]
+visible = false
 position = Vector2(-535, -38.5)
 shape = SubResource("RectangleShape2D_cb6sc")
 
@@ -362,6 +331,7 @@ object_name = "TV"
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonTv/Area2D"]
+visible = false
 position = Vector2(-541, -50.5)
 shape = SubResource("RectangleShape2D_xplcm")
 
@@ -381,6 +351,7 @@ object_name = "TV"
 position = Vector2(533, 39)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SalonCitrouille/Area2D"]
+visible = false
 position = Vector2(-532.5, -40.5)
 shape = SubResource("RectangleShape2D_joy5l")
 

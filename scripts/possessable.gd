@@ -39,7 +39,7 @@ func _on_area_2d_mouse_exited():
 func _on_area_2d_input_event(viewport, event, shape_idx):
 	if event is InputEventMouseButton:
 		SignalBus.possess.emit(object_name, global_position)
-		self.play("possessed")
+		#self.play("possessed")
 		Globals.current_object = object_name
 
 func on_use(level):
