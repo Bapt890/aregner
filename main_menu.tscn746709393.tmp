@@ -112,6 +112,7 @@ theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dy7ct")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0o4t1")
 theme_override_styles/disabled = SubResource("StyleBoxEmpty_0k4wn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j5v2v")
+text = "zdzdazdazdazd"
 
 [node name="start2" type="Button" parent="."]
 offset_left = 318.0
