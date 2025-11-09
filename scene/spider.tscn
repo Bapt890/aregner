@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://chlesa6ppji68"]
+
+[ext_resource type="Texture2D" uid="uid://bqnn1m8fx08fe" path="res://assets/spider.png" id="1_lfhnh"]
+[ext_resource type="Script" uid="uid://cvomudcbplvru" path="res://scene/spider.gd" id="2_cir0e"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lfhnh"]
+radius = 24.020824
+
+[node name="Spider" type="Sprite2D"]
+texture = ExtResource("1_lfhnh")
+script = ExtResource("2_cir0e")
+
+[node name="Area2D" type="Area2D" parent="." groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_lfhnh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

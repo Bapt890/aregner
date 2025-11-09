@@ -79,6 +79,7 @@ height = 4
 [node name="NPC" type="Node" parent="."]
 
 [node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
+position = Vector2(-270, 75)
 target = NodePath("../Destinations/Destination")
 
 [node name="Destinations" type="Node" parent="NPC"]
@@ -88,21 +89,25 @@ position = Vector2(-430, 161)
 cause_stop = true
 stop_duration = 2
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination3"), NodePath("../Destination4")]
+destination_orientation = Array[int]([3, 1, 1])
 
 [node name="Destination2" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
 position = Vector2(-10, 392)
 orientation = 3
 linked_destinations = [NodePath("../Destination"), NodePath("../Destination3"), NodePath("../Destination4")]
+destination_orientation = Array[int]([0, 0, 1])
 
 [node name="Destination3" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(178, 159)
+position = Vector2(-120, -68)
 orientation = 3
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination4")]
+destination_orientation = Array[int]([3, 2, 3])
 
 [node name="Destination4" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-276, 67)
+position = Vector2(361, 185)
 orientation = 3
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination3")]
+destination_orientation = Array[int]([2, 2, 0])
 
 [node name="Camera" type="Camera2D" parent="."]
 
