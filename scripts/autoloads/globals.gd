@@ -73,10 +73,13 @@ func calculate_fear(affinity, level):
 	
 	return 0
 
-func scare(level):
+func scare(pnj1, level):
 	if current_object == "none":
 		return
-	
+	if pnj1 == false:
+		pnj1_active = false
+	else:
+		pnj1_active = true
 	var total_before = pnj1_fear + pnj2_fear
 	
 	if pnj1_active:

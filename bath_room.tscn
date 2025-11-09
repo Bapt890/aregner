@@ -1,38 +1,38 @@
-[gd_scene load_steps=63 format=4 uid="uid://7j1od1qia3u1"]
+[gd_scene load_steps=63 format=4 uid="uid://46bdfyfs2pcc"]
 
-[ext_resource type="Texture2D" uid="uid://ciyukst36vwky" path="res://assets/kitchen room/cuisine_room.png" id="1_iclwl"]
-[ext_resource type="Texture2D" uid="uid://b11h1j5nlgruu" path="res://assets/kitchen room/cuisine_room_cover.png" id="2_w4jdc"]
-[ext_resource type="Texture2D" uid="uid://dcf721nechgsk" path="res://assets/kitchen room/cuisine_evierOK.png" id="3_cl4s0"]
-[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="4_4ja8p"]
-[ext_resource type="Texture2D" uid="uid://diru3kyxtwu0p" path="res://assets/kitchen room/spritesheetevier.png" id="4_aru34"]
-[ext_resource type="Texture2D" uid="uid://yelaipuliued" path="res://assets/kitchen room/four_neutre.png" id="5_4ja8p"]
-[ext_resource type="Texture2D" uid="uid://df684yn4f3dbq" path="res://assets/kitchen room/spritesheetToast.png" id="6_45kli"]
-[ext_resource type="Texture2D" uid="uid://be2c1ispbnf7m" path="res://assets/kitchen room/spritesheetcuisinefrigo.png" id="7_aru34"]
-[ext_resource type="Texture2D" uid="uid://wnh2fdoy4tc0" path="res://assets/kitchen room/four_haunted.png" id="9_t3wjx"]
-[ext_resource type="Texture2D" uid="uid://cjd7ywupujpld" path="res://assets/kitchen room/four_flammes.png" id="10_wcky8"]
-[ext_resource type="Texture2D" uid="uid://0dmxqderj2f3" path="res://assets/kitchen room/spritesheet_hotte.png" id="11_t3wjx"]
+[ext_resource type="Texture2D" uid="uid://ciyukst36vwky" path="res://assets/kitchen room/cuisine_room.png" id="1_awrwj"]
+[ext_resource type="Texture2D" uid="uid://b3yuimxvu0cs6" path="res://assets/bathroom room/salledebain_room.png" id="2_awrwj"]
+[ext_resource type="Texture2D" uid="uid://dcf721nechgsk" path="res://assets/kitchen room/cuisine_evierOK.png" id="3_olcp5"]
+[ext_resource type="Texture2D" uid="uid://diru3kyxtwu0p" path="res://assets/kitchen room/spritesheetevier.png" id="4_pk5rc"]
+[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_1sdll"]
+[ext_resource type="Texture2D" uid="uid://df684yn4f3dbq" path="res://assets/kitchen room/spritesheetToast.png" id="6_xnrye"]
+[ext_resource type="Texture2D" uid="uid://be2c1ispbnf7m" path="res://assets/kitchen room/spritesheetcuisinefrigo.png" id="7_4ifa1"]
+[ext_resource type="Texture2D" uid="uid://yelaipuliued" path="res://assets/kitchen room/four_neutre.png" id="8_xv1y4"]
+[ext_resource type="Texture2D" uid="uid://wnh2fdoy4tc0" path="res://assets/kitchen room/four_haunted.png" id="9_enxoe"]
+[ext_resource type="Texture2D" uid="uid://cjd7ywupujpld" path="res://assets/kitchen room/four_flammes.png" id="10_itaue"]
+[ext_resource type="Texture2D" uid="uid://0dmxqderj2f3" path="res://assets/kitchen room/spritesheet_hotte.png" id="11_dtkbm"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wcky8"]
-atlas = ExtResource("4_aru34")
+atlas = ExtResource("4_pk5rc")
 region = Rect2(0, 0, 346, 389)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j7v2l"]
-atlas = ExtResource("4_aru34")
+atlas = ExtResource("4_pk5rc")
 region = Rect2(346, 0, 346, 389)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4fbkt"]
-atlas = ExtResource("4_aru34")
+atlas = ExtResource("4_pk5rc")
 region = Rect2(692, 0, 346, 389)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_flff1"]
-atlas = ExtResource("4_aru34")
+atlas = ExtResource("4_pk5rc")
 region = Rect2(1038, 0, 346, 389)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8f1l3"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_cl4s0")
+"texture": ExtResource("3_olcp5")
 }],
 "loop": true,
 "name": &"default",
@@ -40,7 +40,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("3_cl4s0")
+"texture": ExtResource("3_olcp5")
 }],
 "loop": true,
 "name": &"possessed",
@@ -84,7 +84,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_flff1")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_cl4s0")
+"texture": ExtResource("3_olcp5")
 }],
 "loop": false,
 "name": &"use",
@@ -114,63 +114,63 @@ tags = {
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_phnpy"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(0, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gtkqu"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(172, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_us0j2"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(344, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_se3y6"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(516, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_2ek6k"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(688, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3arh"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(860, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d4k18"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(1032, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_c8mha"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(1204, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtmp4"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(1376, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6f63c"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(1548, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_w3nvj"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(1720, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xmv4r"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(1892, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5gyb4"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(2064, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gposa"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(2236, 0, 172, 231)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j22ax"]
-atlas = ExtResource("6_45kli")
+atlas = ExtResource("6_xnrye")
 region = Rect2(2408, 0, 172, 231)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lg13y"]
@@ -246,31 +246,31 @@ animations = [{
 size = Vector2(196, 219)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_45kli"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(0, 0, 341, 470)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8f1l3"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(341, 0, 341, 470)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o7u7a"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(682, 0, 341, 470)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hcnyy"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(1023, 0, 341, 470)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lg13y"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(1364, 0, 341, 470)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_gxgj2"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(1705, 0, 341, 470)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_507xx"]
-atlas = ExtResource("7_aru34")
+atlas = ExtResource("7_4ifa1")
 region = Rect2(341, 0, 341, 470)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_td0a3"]
@@ -328,15 +328,15 @@ animations = [{
 size = Vector2(221, 380)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_td0a3"]
-atlas = ExtResource("5_4ja8p")
+atlas = ExtResource("8_xv1y4")
 region = Rect2(0, 0, 345, 294)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d6jyo"]
-atlas = ExtResource("9_t3wjx")
+atlas = ExtResource("9_enxoe")
 region = Rect2(0, 0, 345, 294)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_alro0"]
-atlas = ExtResource("9_t3wjx")
+atlas = ExtResource("9_enxoe")
 region = Rect2(0, 0, 345, 294)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5ljlt"]
@@ -397,35 +397,35 @@ fill = 1
 fill_from = Vector2(0.45327103, 0.47196263)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5ljlt"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(0, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_t7j0s"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(985, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ok64v"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(1970, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_h3tk2"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(3940, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xpj5p"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(2955, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_xf3pv"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(4925, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s5611"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(5910, 0, 985, 848)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0x3ie"]
-atlas = ExtResource("11_t3wjx")
+atlas = ExtResource("11_dtkbm")
 region = Rect2(6895, 0, 985, 848)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7hc58"]
@@ -480,12 +480,14 @@ size = Vector2(312, 300)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2
-texture = ExtResource("1_iclwl")
+texture = ExtResource("1_awrwj")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 z_index = -2
+position = Vector2(0, 86)
 rotation = -0.00018000051
-texture = ExtResource("2_w4jdc")
+scale = Vector2(1.168177, 1.1681769)
+texture = ExtResource("2_awrwj")
 
 [node name="Sink" type="AnimatedSprite2D" parent="."]
 z_index = 1
@@ -493,7 +495,7 @@ position = Vector2(386, -5)
 sprite_frames = SubResource("SpriteFrames_8f1l3")
 animation = &"possessed"
 autoplay = "default"
-script = ExtResource("4_4ja8p")
+script = ExtResource("5_1sdll")
 object_name = "Sink"
 
 [node name="Area2D" type="Area2D" parent="Sink" groups=["object"]]
@@ -511,7 +513,7 @@ z_index = 1
 position = Vector2(-32, -353)
 sprite_frames = SubResource("SpriteFrames_lg13y")
 autoplay = "default"
-script = ExtResource("4_4ja8p")
+script = ExtResource("5_1sdll")
 object_name = "Toaster"
 
 [node name="Area2D" type="Area2D" parent="Toaster" groups=["object"]]
@@ -528,7 +530,7 @@ z_index = 2
 position = Vector2(-432, 61)
 sprite_frames = SubResource("SpriteFrames_td0a3")
 autoplay = "default"
-script = ExtResource("4_4ja8p")
+script = ExtResource("5_1sdll")
 object_name = "Fridge"
 
 [node name="Area2D" type="Area2D" parent="Fridge" groups=["object"]]
@@ -547,7 +549,7 @@ position = Vector2(-231, -70)
 sprite_frames = SubResource("SpriteFrames_5ljlt")
 animation = &"possessed"
 autoplay = "default"
-script = ExtResource("4_4ja8p")
+script = ExtResource("5_1sdll")
 object_name = "Oven"
 
 [node name="Area2D" type="Area2D" parent="Oven" groups=["object"]]
@@ -569,7 +571,7 @@ texture_scale = 10.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Oven/PointLight2D"]
 position = Vector2(10, 3)
-texture = ExtResource("10_wcky8")
+texture = ExtResource("10_itaue")
 
 [node name="UsePlayer" type="AudioStreamPlayer" parent="Oven"]
 stream = SubResource("AudioStreamOggVorbis_t3wjx")
@@ -579,7 +581,7 @@ z_index = 1
 position = Vector2(-20, -140)
 sprite_frames = SubResource("SpriteFrames_7hc58")
 autoplay = "default"
-script = ExtResource("4_4ja8p")
+script = ExtResource("5_1sdll")
 object_name = "Hood"
 
 [node name="Area2D" type="Area2D" parent="Hood" groups=["object"]]
