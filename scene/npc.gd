@@ -3,7 +3,7 @@ extends Node2D
 enum State {IDLE, WALK, INSPECT, CALL, TRAPPED}
 enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
 @export_enum("Male:1", "Female:2") var id_pnj = 1
-const speed = 300
+@export var speed = 300
 # The destination to go to
 @export var target : Destination = null
 var current_destination : Destination = null
@@ -46,12 +46,12 @@ func _process(delta):
 					doing_job = true
 					current_state = State.IDLE
 				# Teleports
-				#elif target.teleport_destination:
-					#global_position = target.teleport_destination.global_position
-					#current_orientation = target.teleport_destination.orientation as Orientation
-					#target = target.teleport_destination.get_random_destination()
-					#current_orientation = current_destination.get_path_orientation() as Orientation
-					#go_to()
+				elif target.teleport_destination:
+					global_position = target.teleport_destination.global_position
+					current_orientation = target.teleport_destination.orientation as Orientation
+					target = target.teleport_destination.get_random_destination()
+					current_orientation = current_destination.get_path_orientation() as Orientation
+					go_to()
 				# Gives new destination
 				else:
 					target = target.get_random_destination()
