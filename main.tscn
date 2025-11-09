@@ -1,5 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dftqgscgou0po"]
-[gd_scene load_steps=26 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=25 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -8,19 +7,20 @@
 [ext_resource type="PackedScene" uid="uid://dmo6ch2xreba2" path="res://living_room.tscn" id="2_kek77"]
 [ext_resource type="PackedScene" uid="uid://dcv6rxbagi8t0" path="res://scene/destination.tscn" id="3_kek77"]
 [ext_resource type="AudioStream" uid="uid://df7tkluxjl5au" path="res://assets/SFX/spider.ogg" id="4_kek77"]
-[ext_resource type="Texture2D" uid="uid://dl7w4n7tp5t7b" path="res://assets/kitchen room/barre.png" id="7_yaehf"]
 [ext_resource type="AudioStream" uid="uid://bat8y31tjwrwr" path="res://assets/SFX/prototypejenaimarre.ogg" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ddtadj4ipd1r0" path="res://assets/arrow.png" id="8_kek77"]
 [ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="9_efxa6"]
 [ext_resource type="Script" path="res://countdown.gd" id="9_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://c1l4r7vns6seh" path="res://assets/contols.png" id="10_vivmo"]
-[ext_resource type="Texture2D" uid="uid://847371a1606k" path="res://assets/Araignée.png" id="12_074og"]
 [ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
 [ext_resource type="PackedScene" path="res://bath_room.tscn" id="13_w48qg"]
-[ext_resource type="PackedScene" uid="uid://46bdfyfs2pcc" path="res://bath_room.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
+
+[sub_resource type="Theme" id="Theme_yaehf"]
+default_font = ExtResource("9_efxa6")
+default_font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cegan"]
 bg_color = Color(0, 0, 0, 0.4117647)
@@ -175,14 +175,11 @@ stop_duration = 4
 linked_destinations = [NodePath("../LR3"), NodePath("../LRTransitionB")]
 destination_orientation = Array[int]([1, 3])
 
-[node name="LRTransitionK" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations", "teleport_destination") instance=ExtResource("3_kek77")]
 [node name="LRTransitionK" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
 position = Vector2(313, 293)
 linked_destinations = [NodePath("../LR2"), NodePath("../LR4")]
 destination_orientation = Array[int]([2, 1])
-teleport_destination = NodePath("../KTransLR")
 
-[node name="LRTransitionB" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations", "teleport_destination") instance=ExtResource("3_kek77")]
 [node name="LRTransitionB" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
 position = Vector2(-259, 321)
 linked_destinations = [NodePath("../LR"), NodePath("../LRJobBook"), NodePath("../LR5")]
@@ -304,7 +301,7 @@ destination_orientation = Array[int]([0, 1, 2])
 teleport_destination = NodePath("../LRTransitionB")
 
 [node name="BTransK" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations", "teleport_destination") instance=ExtResource("3_kek77")]
-position = Vector2(-2123, 313)
+position = Vector2(-2123, 312)
 orientation = 1
 linked_destinations = [NodePath("../BJobWater"), NodePath("../B6"), NodePath("../B3")]
 destination_orientation = Array[int]([0, 1, 3])
@@ -324,14 +321,26 @@ sprite_frames = SubResource("SpriteFrames_5vw27")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1820.6666
-offset_top = 107.0
-offset_right = 747.6333
-offset_bottom = -819.3334
+offset_left = 1310.0
+offset_top = 1162.0001
+offset_right = 1310.0
+offset_bottom = 1162.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_yaehf")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 offset_left = 1824.0374
 offset_top = 136.17755
 offset_right = 692.6489
@@ -343,20 +352,21 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yaehf")
 script = SubResource("GDScript_272bh")
 
-[node name="ProgressBar5" type="TextureRect" parent="CanvasLayer"]
+[node name="ProgressBar5" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1824.0374
+offset_left = 1822.3431
 offset_top = 136.17755
-offset_right = 692.6489
+offset_right = 694.34326
 offset_bottom = -796.27594
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
-texture = ExtResource("7_yaehf")
 
-[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -372,21 +382,22 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/fill = SubResource("StyleBoxFlat_82xsv")
 script = SubResource("GDScript_yaehf")
 
-[node name="ProgressBar6" type="TextureRect" parent="CanvasLayer"]
+[node name="ProgressBar6" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1659.0
+offset_left = 1657.3058
 offset_top = 206.0
-offset_right = 527.6116
+offset_right = 529.30566
 offset_bottom = -726.4535
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_yaehf")
 
-[node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -402,19 +413,27 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/fill = SubResource("StyleBoxFlat_074og")
 script = SubResource("GDScript_074og")
 
-[node name="ProgressBar4" type="TextureRect" parent="CanvasLayer"]
+[node name="ProgressBar4" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1659.0
+offset_left = 1657.3058
 offset_top = 544.0
-offset_right = 527.6116
+offset_right = 529.30566
 offset_bottom = -388.4535
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
-texture = ExtResource("7_yaehf")
+
+[node name="Araignée" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1909.0
+offset_top = 318.0
+offset_right = 2352.0
+offset_bottom = 403.0
+rotation = 1.5707964
 
 [node name="ButtonLeft" type="TextureButton" parent="CanvasLayer"]
 offset_left = 494.0
@@ -447,14 +466,6 @@ offset_top = 858.0
 offset_right = 756.0
 offset_bottom = 1054.0
 texture = ExtResource("10_vivmo")
-
-[node name="Araignée" type="TextureRect" parent="CanvasLayer"]
-offset_left = 1909.0
-offset_top = 318.0
-offset_right = 2352.0
-offset_bottom = 403.0
-rotation = 1.5707964
-texture = ExtResource("12_074og")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 offset_right = 40.0
