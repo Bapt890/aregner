@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://lwbm555q4l6v"]
+[gd_scene load_steps=10 format=3 uid="uid://lwbm555q4l6v"]
 
 [ext_resource type="Script" uid="uid://db2fmya22n7ig" path="res://scene/npc.gd" id="1_54ctn"]
 [ext_resource type="Texture2D" uid="uid://wsr6tqekp3yl" path="res://assets/npc/male_walk_front.png" id="2_54ctn"]
 [ext_resource type="Texture2D" uid="uid://bokd2dyily5v3" path="res://assets/npc/excla.png" id="2_ab2no"]
+[ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="4_8oust"]
 
 [sub_resource type="Animation" id="Animation_8oust"]
 length = 0.001
@@ -42,9 +43,25 @@ _data = {
 &"walking": SubResource("Animation_ab2no")
 }
 
-[node name="NPC" type="Node2D"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pesj1"]
+bg_color = Color(0.7529412, 0.20784314, 0.20784314, 0)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8oust"]
+bg_color = Color(0.88503844, 0, 0.19412565, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_bottom = 4
+border_color = Color(0, 0, 0, 1)
+
+[node name="NPC" type="Node2D" node_paths=PackedStringArray("detection_bar")]
 y_sort_enabled = true
 script = ExtResource("1_54ctn")
+detection_bar = NodePath("ProgressBar")
 
 [node name="EmoteSprite" type="Sprite2D" parent="."]
 visible = false
@@ -74,6 +91,15 @@ libraries = {
 &"": SubResource("AnimationLibrary_pesj1")
 }
 autoplay = "walking"
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -88.0
+offset_top = 67.0
+offset_right = 92.0
+offset_bottom = 94.0
+theme_override_fonts/font = ExtResource("4_8oust")
+theme_override_styles/background = SubResource("StyleBoxFlat_pesj1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_8oust")
 
 [connection signal="area_entered" from="SightArea" to="." method="_on_sight_area_area_entered"]
 [connection signal="area_exited" from="SightArea" to="." method="_on_sight_area_area_exited"]

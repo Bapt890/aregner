@@ -1,4 +1,7 @@
-[gd_scene load_steps=0 format=3 uid="uid://o1ls7xvuqw64"]
+[gd_scene load_steps=3 format=3 uid="uid://o1ls7xvuqw64"]
+
+[ext_resource type="Texture2D" uid="uid://b4062qy7tnono" path="res://assets/Screenwin.png" id="1_7bnjr"]
+[ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="2_v31sk"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -19,3 +22,17 @@ theme_override_font_sizes/font_size = 64
 text = "Tu Gagne (le nul)"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 242.0
+offset_top = 45.0
+offset_right = 1682.0
+offset_bottom = 1017.0
+texture = ExtResource("1_7bnjr")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = -5
+position = Vector2(973, 534)
+scale = Vector2(1.4762552, 1.476255)
+texture = ExtResource("2_v31sk")

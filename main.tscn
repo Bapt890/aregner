@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=18 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -10,8 +10,10 @@
 [ext_resource type="AudioStream" uid="uid://bat8y31tjwrwr" path="res://assets/SFX/prototypejenaimarre.ogg" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ddtadj4ipd1r0" path="res://assets/arrow.png" id="8_kek77"]
 [ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="9_efxa6"]
-[ext_resource type="Script" path="res://countdown.gd" id="9_ycdy4"]
+[ext_resource type="Script" uid="uid://dn2kmxqg0v0xc" path="res://countdown.gd" id="9_ycdy4"]
+[ext_resource type="Texture2D" uid="uid://c1l4r7vns6seh" path="res://assets/contols.png" id="10_vivmo"]
 [ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
+[ext_resource type="PackedScene" uid="uid://46bdfyfs2pcc" path="res://bath_room.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
@@ -178,6 +180,13 @@ theme_override_font_sizes/font_size = 64
 text = "00:00"
 script = ExtResource("9_ycdy4")
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 27.0
+offset_top = 858.0
+offset_right = 756.0
+offset_bottom = 1054.0
+texture = ExtResource("10_vivmo")
+
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5vw27")
 volume_db = -10.0
@@ -190,8 +199,8 @@ script = ExtResource("13_vivmo")
 [node name="KitchenRoom" parent="Rooms" instance=ExtResource("14_w48qg")]
 position = Vector2(1920, -6)
 
-[node name="KitchenRoom2" parent="Rooms" instance=ExtResource("14_w48qg")]
-position = Vector2(-1920, -6)
+[node name="BathRoom" parent="Rooms" instance=ExtResource("13_w48qg")]
+position = Vector2(-1920, 0)
 
 [node name="LivingRoom" parent="Rooms" instance=ExtResource("2_kek77")]
 

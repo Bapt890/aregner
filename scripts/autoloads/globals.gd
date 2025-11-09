@@ -104,6 +104,8 @@ func scare(pnj1, level):
 			_on_game_over()
 			return
 	fear = pnj1_fear + pnj2_fear
+	if fear >= 100:
+		_on_victory()
 	var total_now = pnj1_fear + pnj2_fear
 	SignalBus.emit_signal("fear_changed")
 
@@ -112,3 +114,4 @@ func _on_game_over():
 
 func _on_victory():
 	get_tree().change_scene_to_file("res://victory.tscn")
+	
