@@ -43,17 +43,20 @@ _data = {
 }
 
 [node name="NPC" type="Node2D"]
+y_sort_enabled = true
 script = ExtResource("1_54ctn")
 
 [node name="EmoteSprite" type="Sprite2D" parent="."]
 visible = false
 z_index = 2
-position = Vector2(0, -115)
+position = Vector2(0, -225)
 scale = Vector2(0.15, 0.15)
 texture = ExtResource("2_ab2no")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-z_index = 2
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -100)
 texture = ExtResource("2_54ctn")
 hframes = 4
 

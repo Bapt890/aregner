@@ -3,7 +3,7 @@ extends Node2D
 enum State {IDLE, WALK, INSPECT, CALL, TRAPPED}
 enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
 @export_enum("Male:1", "Female:2") var id_pnj = 1
-const speed = 1000
+const speed = 300
 # The destination to go to
 @export var target : Destination = null
 var current_destination : Destination = null
@@ -76,7 +76,7 @@ func _process(delta):
 				$Timer.start()
 				var emote_tween = create_tween()
 				$EmoteSprite.show()
-				emote_tween.tween_property($EmoteSprite, "position:y", -200, 0.75).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+				emote_tween.tween_property($EmoteSprite, "position:y", -300, 0.75).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 				await $Timer.timeout
 				Globals._on_game_over()
 			#
