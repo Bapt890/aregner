@@ -12,5 +12,4 @@ func _on_area_2d_area_entered(area):
 func _on_area_2d_area_exited(area):
 	if area.is_in_group("safezone"): 
 		safe_zone_count -= 1
-		print(safe_zone_count)
-		#f safe_zone_count <= 0: $Area2D.monitorable = true
+		#if safe_zone_count <= 0: $Area2D.monitorable = true
