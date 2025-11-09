@@ -2,11 +2,10 @@ extends Node2D
 
 enum State {IDLE, WALK, INSPECT, CALL, TRAPPED}
 enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
-@export var id_pnj = 1
+@export_enum("Male:1", "Female:2") var id_pnj = 1
 const speed = 1000
 # The destination to go to
 @export var target : Destination = null
-@export_enum("Male", "Female") var gender : int
 var current_destination : Destination = null
 # Objects in FOV
 var sighted_objects : Array
@@ -23,17 +22,16 @@ var objects_sighted: Array
 @onready var sight_area: Area2D = $SightArea
 
 func _ready() -> void:
-	if id_pnj == 1:
-		sight_area.add_to_group("pnj1")
-	else:
-		sight_area.add_to_group("pnj2")
+	if id_pnj == 1: sight_area.add_to_group("pnj1")
+	else: sight_area.add_to_group("pnj2")
+		
 func _process(delta):
 	# Stops when it sees spiders
 	if spider_sighted >= 1:
 		tween.stop()
 		current_state = State.CALL
 	# For sprite changing
-	var prefix = "fe" if gender == 1 else ""
+	var prefix = "fe" if id_pnj == 2 else ""
 	match current_state:
 		State.WALK:
 			if !$AnimationPlayer.is_playing(): 
@@ -74,10 +72,14 @@ func _process(delta):
 			elif target: go_to()
 		State.CALL:
 			# If calling, you are doomed after the timer
-			position = position
-			#if $Timer.is_stopped(): $Timer.start()
-			#await $Timer.timeout
-			#Globals._on_game_over()
+			if $Timer.is_stopped():
+				$Timer.start()
+				var emote_tween = create_tween()
+				$EmoteSprite.show()
+				emote_tween.tween_property($EmoteSprite, "position:y", -200, 0.75).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+				await $Timer.timeout
+				Globals._on_game_over()
+			#
 	match current_orientation:
 		Orientation.UPLEFT: 
 			$SightArea/Polygon2D.rotation_degrees = 135
@@ -86,15 +88,18 @@ func _process(delta):
 			$Sprite2D.flip_h = true
 		Orientation.UPRIGHT: 
 			$SightArea/Polygon2D.rotation_degrees = 225
-			change_sprite("res://assets/npc/male_walk_back.png", "res://assets/npc/male_idle_back.png")
+			change_sprite("res://assets/npc/%smale_walk_back.png" % prefix, \
+				"res://assets/npc/%smale_idle_back.png" % prefix)
 			$Sprite2D.flip_h = false
 		Orientation.DOWNLEFT: 
 			$SightArea/Polygon2D.rotation_degrees = 45
-			change_sprite("res://assets/npc/male_walk_front.png", "res://assets/npc/male_idle_front.png")
+			change_sprite("res://assets/npc/%smale_walk_front.png" % prefix, \
+				"res://assets/npc/%smale_idle_front.png" % prefix)
 			$Sprite2D.flip_h = false
 		Orientation.DOWNRIGHT: 
 			$SightArea/Polygon2D.rotation_degrees = 315
-			change_sprite("res://assets/npc/male_walk_front.png", "res://assets/npc/male_idle_front.png")
+			change_sprite("res://assets/npc/%smale_walk_front.png" % prefix, \
+				"res://assets/npc/%smale_idle_front.png" % prefix)
 			$Sprite2D.flip_h = true
 
 func change_sprite(walk : String, idle : String):

@@ -8,6 +8,9 @@ extends AnimatedSprite2D
 @export var shake_strength = 10.0
 @export var shake_angle = 0.07
 @export var shake_steps = 6
+@export_group("Fear Strength")
+@export var fear_npc1 : Array[int] = [0, 0]
+@export var fear_npc2 : Array[int] = [0, 0]
 
 var target_strength = 0.0
 var current_strength = 0.0

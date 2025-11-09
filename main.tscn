@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://df7tkluxjl5au" path="res://assets/SFX/spider.ogg" id="4_kek77"]
 [ext_resource type="AudioStream" uid="uid://bat8y31tjwrwr" path="res://assets/SFX/prototypejenaimarre.ogg" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ddtadj4ipd1r0" path="res://assets/arrow.png" id="8_kek77"]
+[ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="9_efxa6"]
+[ext_resource type="Script" path="res://countdown.gd" id="9_ycdy4"]
 [ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
 [ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
 
@@ -30,6 +32,7 @@ func fear_changed():
 
 [node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
 position = Vector2(1911, -55)
+id_pnj = 2
 target = NodePath("../Destinations/KJob")
 
 [node name="spiders" type="Node2D" parent="NPC" node_paths=PackedStringArray("move_sound", "jump_sound")]

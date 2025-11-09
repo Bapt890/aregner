@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://lwbm555q4l6v"]
+[gd_scene load_steps=7 format=3 uid="uid://lwbm555q4l6v"]
 
 [ext_resource type="Script" uid="uid://db2fmya22n7ig" path="res://scene/npc.gd" id="1_54ctn"]
 [ext_resource type="Texture2D" uid="uid://wsr6tqekp3yl" path="res://assets/npc/male_walk_front.png" id="2_54ctn"]
+[ext_resource type="Texture2D" uid="uid://bokd2dyily5v3" path="res://assets/npc/excla.png" id="2_ab2no"]
 
 [sub_resource type="Animation" id="Animation_8oust"]
 length = 0.001
@@ -43,6 +44,13 @@ _data = {
 
 [node name="NPC" type="Node2D"]
 script = ExtResource("1_54ctn")
+
+[node name="EmoteSprite" type="Sprite2D" parent="."]
+visible = false
+z_index = 2
+position = Vector2(0, -115)
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_ab2no")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = 2
