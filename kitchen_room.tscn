@@ -484,7 +484,7 @@ z_index = -2
 texture = ExtResource("1_iclwl")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
-z_index = 1
+z_index = -2
 rotation = -0.00018000051
 texture = ExtResource("2_w4jdc")
 

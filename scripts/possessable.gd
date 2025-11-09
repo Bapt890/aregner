@@ -58,6 +58,7 @@ func on_use(level):
 		if level == "low":
 			start_shake()
 			Globals.scare("low")
+			self.play("default")
 		else:
 			self.play("use")
 			Globals.scare("low")
@@ -67,6 +68,8 @@ func on_use(level):
 				point_light.visible = true
 				await self.animation_finished
 				point_light.visible = false
+			await self.animation_finished
+			self.play("default")
 		Globals.current_object = "none"
 
 func start_shake():
