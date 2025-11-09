@@ -10,6 +10,7 @@ var fear = 0
 var pnj1_active = true
 var pnj2_active = false
 
+
 var table_pnj1 = {
 	"TV": "faible",
 	"Bookshelf": "fort",

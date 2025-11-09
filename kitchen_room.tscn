@@ -478,6 +478,13 @@ size = Vector2(312, 300)
 
 [node name="KitchenRoom" type="Node2D"]
 
+[node name="SafeZones" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="SafeZones" groups=["safezone"]]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="SafeZones/Area2D"]
+polygon = PackedVector2Array(530, 115, 476, 183, 0, -86, -481, 239, -628, 151, -669, -326, -240, -587, 301, -571, 771, -335, 695, 221)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 z_index = -2
 texture = ExtResource("1_iclwl")
