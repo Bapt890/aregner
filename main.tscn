@@ -13,8 +13,8 @@
 [ext_resource type="Texture2D" uid="uid://b3do3tkjq1gda" path="res://assets/UI/A.png" id="10_dg77c"]
 [ext_resource type="Texture2D" uid="uid://d1jfegrme7l14" path="res://assets/UI/E.png" id="10_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://25qjtlvyjm1k" path="res://assets/UI/mouse.png" id="12_w48qg"]
-[ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
-[ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
+[ext_resource type="Script" path="res://move_rooms.gd" id="13_vivmo"]
+[ext_resource type="PackedScene" path="res://kitchen_room.tscn" id="14_w48qg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 
@@ -82,29 +82,60 @@ height = 4
 position = Vector2(-270, 75)
 target = NodePath("../Destinations/Destination")
 
+[node name="spiders" type="Node2D" parent="NPC" node_paths=PackedStringArray("move_sound", "jump_sound")]
+script = ExtResource("1_ig7tw")
+spider_count = 5
+base_spread = 200.0
+spider_scale = 0.6999999999970896
+spritesheet = ExtResource("2_0xm2m")
+move_sound = NodePath("MovePlayer")
+jump_sound = NodePath("JumpPlayer")
+
+[node name="JumpPlayer" type="AudioStreamPlayer" parent="NPC/spiders"]
+
+[node name="MovePlayer" type="AudioStreamPlayer" parent="NPC/spiders"]
+stream = ExtResource("4_kek77")
+
+[node name="MoveArea" type="Area2D" parent="NPC/spiders"]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NPC/spiders/MoveArea"]
+polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
+
+[node name="MoveArea2" type="Area2D" parent="NPC/spiders"]
+position = Vector2(-1912, -5)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NPC/spiders/MoveArea2"]
+polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
+
+[node name="MoveArea3" type="Area2D" parent="NPC/spiders"]
+position = Vector2(1920, -3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NPC/spiders/MoveArea3"]
+polygon = PackedVector2Array(616, 157, 353, 0, 250, 58, 0, -94, -85, -44, -174, -90, -611, 163, 5, 514)
+
 [node name="Destinations" type="Node" parent="NPC"]
 
 [node name="Destination" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-430, 161)
+position = Vector2(-279, 277)
 cause_stop = true
 stop_duration = 2
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination3"), NodePath("../Destination4")]
 destination_orientation = Array[int]([3, 1, 1])
 
 [node name="Destination2" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-10, 392)
+position = Vector2(2, 413)
 orientation = 3
 linked_destinations = [NodePath("../Destination"), NodePath("../Destination3"), NodePath("../Destination4")]
 destination_orientation = Array[int]([0, 0, 1])
 
 [node name="Destination3" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-120, -68)
+position = Vector2(-223, -18)
 orientation = 3
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination4")]
 destination_orientation = Array[int]([3, 2, 3])
 
 [node name="Destination4" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(361, 185)
+position = Vector2(252, 293)
 orientation = 3
 linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination3")]
 destination_orientation = Array[int]([2, 2, 0])
@@ -115,37 +146,6 @@ destination_orientation = Array[int]([2, 2, 0])
 z_index = -5
 scale = Vector2(1.4762552, 1.476255)
 texture = ExtResource("1_5vw27")
-
-[node name="spiders" type="Node2D" parent="." node_paths=PackedStringArray("move_sound", "jump_sound")]
-script = ExtResource("1_ig7tw")
-spider_count = 5
-base_spread = 200.0
-spider_scale = 0.6999999999970896
-spritesheet = ExtResource("2_0xm2m")
-move_sound = NodePath("MovePlayer")
-jump_sound = NodePath("JumpPlayer")
-
-[node name="JumpPlayer" type="AudioStreamPlayer" parent="spiders"]
-
-[node name="MovePlayer" type="AudioStreamPlayer" parent="spiders"]
-stream = ExtResource("4_kek77")
-
-[node name="MoveArea" type="Area2D" parent="spiders"]
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spiders/MoveArea"]
-polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
-
-[node name="MoveArea2" type="Area2D" parent="spiders"]
-position = Vector2(-1912, -5)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spiders/MoveArea2"]
-polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
-
-[node name="MoveArea3" type="Area2D" parent="spiders"]
-position = Vector2(1920, -3)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="spiders/MoveArea3"]
-polygon = PackedVector2Array(616, 157, 353, 0, 250, 58, 0, -94, -85, -44, -174, -90, -611, 163, 5, 514)
 
 [node name="Destination" parent="." instance=ExtResource("3_kek77")]
 
@@ -259,6 +259,7 @@ offset = Vector2(29, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5vw27")
+volume_db = -10.0
 autoplay = true
 parameters/looping = true
 
@@ -273,8 +274,8 @@ position = Vector2(-1920, -6)
 
 [node name="LivingRoom" parent="Rooms" instance=ExtResource("2_kek77")]
 
-[connection signal="input_event" from="spiders/MoveArea" to="spiders" method="_on_move_area_input_event"]
-[connection signal="input_event" from="spiders/MoveArea2" to="spiders" method="_on_move_area_input_event"]
-[connection signal="input_event" from="spiders/MoveArea3" to="spiders" method="_on_move_area_input_event"]
+[connection signal="input_event" from="NPC/spiders/MoveArea" to="NPC/spiders" method="_on_move_area_input_event"]
+[connection signal="input_event" from="NPC/spiders/MoveArea2" to="NPC/spiders" method="_on_move_area_input_event"]
+[connection signal="input_event" from="NPC/spiders/MoveArea3" to="NPC/spiders" method="_on_move_area_input_event"]
 [connection signal="pressed" from="CanvasLayer/ButtonLeft" to="Rooms" method="_on_button_left_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonRight" to="Rooms" method="_on_button_right_pressed"]

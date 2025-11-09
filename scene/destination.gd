@@ -12,6 +12,10 @@ class_name Destination
 @export var linked_destinations : Array[Destination]
 # Last chosen destination, avoid immediate backtracking
 @export_enum("Up Left", "Up Right", "Down Left", "Down Right") var destination_orientation: Array[int]
+# Used for room transition
+@export var teleport_destination : Destination = null
+# The orientation of the NPC when changing room
+@export_enum("Up Left", "Up Right", "Down Left", "Down Right") var teleport_orientation : int
 # Array of linked destinations
 var last_destination : Destination = null
 # Used for associating the destination path and the associated orientation
