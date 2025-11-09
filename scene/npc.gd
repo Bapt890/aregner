@@ -9,7 +9,7 @@ enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
 var current_destination : Destination = null
 
 @export var detection_bar: ProgressBar
-@export var detection_time_to_fill := 15      # seconds to go 0 -> 100% while seeing player
+@export var detection_time_to_fill := 50      # seconds to go 0 -> 100% while seeing player
 @export var detection_time_to_empty := 1.5     # seconds to go 100% -> 0 when player lost
 var detection := 0.0
 var gameover_fired := false
@@ -157,13 +157,13 @@ func go_to():
 
 func _on_sight_area_area_entered(area : Area2D):
 	if area.is_in_group("player"): 
-		spider_sighted += 1
+		spider_sighted += 0
 	if area.is_in_group("object"): 
 		objects_sighted.append(area)
 		
 
 func _on_sight_area_area_exited(area):
 	if area.is_in_group("player"): 
-		spider_sighted -= 1
+		spider_sighted -= 0
 	if area.is_in_group("object"): 
 		objects_sighted.erase(area)

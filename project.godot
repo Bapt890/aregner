@@ -11,8 +11,10 @@ config_version=5
 [application]
 
 config/name="aegner"
-run/main_scene="uid://dftqgscgou0po"
+run/main_scene="uid://dvbgk030ern5w"
 config/features=PackedStringArray("4.5", "Forward Plus")
+boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/image="uid://ci4xnn6wyj6ms"
 config/icon="res://icon.svg"
 <<<<<<<Updatedupstreamrun/main_scene="uid://8io18nqqvmfo"
 

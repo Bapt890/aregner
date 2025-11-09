@@ -5,7 +5,7 @@ signal timer_changed(time_remaining)
 var current_object = "none"
 var pnj1_fear = 0
 var pnj2_fear = 0
-var max_fear = 100
+var max_fear = 80
 var fear = 0
 var pnj1_active = true
 var pnj2_active = false

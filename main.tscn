@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=27 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -9,6 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://df7tkluxjl5au" path="res://assets/SFX/spider.ogg" id="4_kek77"]
 [ext_resource type="AudioStream" uid="uid://bat8y31tjwrwr" path="res://assets/SFX/prototypejenaimarre.ogg" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ddtadj4ipd1r0" path="res://assets/arrow.png" id="8_kek77"]
+[ext_resource type="Texture2D" uid="uid://dsrpe8xkvfgfp" path="res://assets/Barre de peur/barre.png" id="8_yaehf"]
+[ext_resource type="Texture2D" uid="uid://dy7bji4kb8h28" path="res://assets/Barre de peur/Araignée.png" id="9_074og"]
 [ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="9_efxa6"]
 [ext_resource type="Script" uid="uid://dn2kmxqg0v0xc" path="res://countdown.gd" id="9_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://c1l4r7vns6seh" path="res://assets/contols.png" id="10_vivmo"]
@@ -364,6 +366,7 @@ offset_bottom = -796.27594
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
+texture = ExtResource("8_yaehf")
 
 [node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -395,6 +398,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_yaehf")
 
 [node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -426,6 +430,7 @@ grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
+texture = ExtResource("8_yaehf")
 
 [node name="Araignée" type="TextureRect" parent="CanvasLayer/Control"]
 layout_mode = 0
@@ -434,6 +439,7 @@ offset_top = 318.0
 offset_right = 2352.0
 offset_bottom = 403.0
 rotation = 1.5707964
+texture = ExtResource("9_074og")
 
 [node name="ButtonLeft" type="TextureButton" parent="CanvasLayer"]
 offset_left = 494.0
