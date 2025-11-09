@@ -1,30 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://cgg60cqb4c3vd"]
+[gd_scene load_steps=3 format=3 uid="uid://ciwslne51keue"]
 
 [ext_resource type="Texture2D" uid="uid://cgogj66t3nros" path="res://assets/UI/lost.png" id="1_y26ei"]
+[ext_resource type="AudioStream" uid="uid://d4mfhbmgnmt2u" path="res://assets/SFX/loosemusic.ogg" id="2_yxx3c"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
 anchors_preset = 0
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.5
-offset_top = -11.5
-offset_right = 1152.0
-offset_bottom = 648.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 64
-text = "Perdu
-(le nul)"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("1_y26ei")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_yxx3c")
+autoplay = true
+parameters/looping = true

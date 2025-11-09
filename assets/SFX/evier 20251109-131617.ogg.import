@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bj6d0csvyd607"
+path="res://.godot/imported/evier 20251109-131617.ogg-3101dbda0febfef7713f1de43ee1e12d.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/SFX/evier 20251109-131617.ogg"
+dest_files=["res://.godot/imported/evier 20251109-131617.ogg-3101dbda0febfef7713f1de43ee1e12d.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
