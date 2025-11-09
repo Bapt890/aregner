@@ -80,7 +80,7 @@ hframes = 4
 [node name="SightArea" type="Area2D" parent="." groups=["player", "pnj1"]]
 
 [node name="Polygon2D" type="CollisionPolygon2D" parent="SightArea"]
-polygon = PackedVector2Array(0, 0, 750, 1000, -750, 1000)
+polygon = PackedVector2Array(0, 0, 750, 750, -750, 750)
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0

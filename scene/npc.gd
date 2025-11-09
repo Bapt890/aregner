@@ -91,7 +91,6 @@ func _process(delta):
 				# Teleports
 				elif target.teleport_destination:
 					global_position = target.teleport_destination.global_position
-					current_orientation = target.teleport_destination.orientation as Orientation
 					target = target.teleport_destination.get_random_destination()
 					current_orientation = current_destination.get_path_orientation() as Orientation
 					go_to()
