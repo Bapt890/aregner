@@ -4,12 +4,18 @@ extends Sprite2D
 var safe_zone_count : int = 0
 
 func _on_area_2d_area_entered(area):
+	# If safe zone, spiders cannot be seen
 	if area.is_in_group("safezone"): 
 		safe_zone_count += 1
 		$Area2D.set_deferred("monitorable", false) 
-		print($Area2D.monitorable)
+		await get_tree().process_frame
+		$Area2D.hide()
 
 func _on_area_2d_area_exited(area):
+	# If safe zone, if there is no safe zone, makes spiders visible again
 	if area.is_in_group("safezone"): 
 		safe_zone_count -= 1
-		#if safe_zone_count <= 0: $Area2D.monitorable = true
+		if safe_zone_count <= 0: 
+			$Area2D.set_deferred("monitorable", true) 
+			await get_tree().process_frame
+			$Area2D.show()
