@@ -8,3 +8,15 @@ script = ExtResource("1_54ctn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_ab2no")
+
+[node name="SightArea" type="Area2D" parent="." groups=["player"]]
+
+[node name="Polygon2D" type="CollisionPolygon2D" parent="SightArea"]
+polygon = PackedVector2Array(0, 0, 750, 1000, -750, 1000)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="area_entered" from="SightArea" to="." method="_on_sight_area_area_entered"]
+[connection signal="area_exited" from="SightArea" to="." method="_on_sight_area_area_exited"]

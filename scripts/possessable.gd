@@ -36,7 +36,7 @@ func _on_area_2d_mouse_entered():
 func _on_area_2d_mouse_exited():
 	target_strength = 0.0
 
-func _on_area_2d_input_event(viewport, event, shape_idx):
+func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		SignalBus.possess.emit(object_name, global_position)
 		#self.play("possessed")

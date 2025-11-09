@@ -1,5 +1,7 @@
 extends Node2D
 
+@onready var spider = preload("res://scene/spider.tscn")
+
 @export var spider_count = 30
 @export var move_speed = 300.0
 @export var base_spread = 50.0
@@ -45,13 +47,13 @@ func _ready():
 
 func _initialize_spiders(count: int):
 	for i in count:
-		var sprite = Sprite2D.new()
+		var sprite = spider.instantiate()
 		sprite.texture = spritesheet
 		sprite.hframes = 6
 		sprite.vframes = 1
 		sprite.centered = true
 		
-		var color_shift = randf_range(-color_variation, color_variation)
+		#var color_shift = randf_range(-color_variation, color_variation)
 		sprite.modulate = Color(
 			1.0 + randf_range(-color_variation, color_variation),
 			1.0 + randf_range(-color_variation, color_variation),
@@ -61,7 +63,6 @@ func _initialize_spiders(count: int):
 		
 		add_child(sprite)
 		spider_sprites.append(sprite)
-		
 		positions.append(Vector2(randf_range(-_get_spread(), _get_spread()), randf_range(-_get_spread(), _get_spread())))
 		delays.append(0.0)
 		targets.append(Vector2.ZERO)
@@ -181,7 +182,7 @@ func _on_possess(object: String, pos: Vector2) -> void:
 		else:
 			is_jumping[i] = false
 
-func _on_use(intensity: String) -> void:
+func _on_use(_intensity: String) -> void:
 	var current_time = Time.get_ticks_msec() / 1000.0
 	if current_time - last_use_time < use_cooldown:
 		return
@@ -224,7 +225,7 @@ func update_spider_count():
 		spider_scales.resize(new_count)
 		flip_timers.resize(new_count)
 
-func _on_move_area_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_move_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
 		_on_possess("none", get_global_mouse_position())
 		Globals.current_object = "none"

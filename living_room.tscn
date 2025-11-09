@@ -1,10 +1,10 @@
-[gd_scene load_steps=43 format=3 uid="uid://dmo6ch2xreba2"]
+[gd_scene load_steps=48 format=3 uid="uid://dmo6ch2xreba2"]
 
 [ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_6utvc"]
 [ext_resource type="Shader" uid="uid://dyacwyt1jotmf" path="res://glow.gdshader" id="2_j7inc"]
 [ext_resource type="Texture2D" uid="uid://cfs6ouh4nwmo6" path="res://assets/living room/salon_bibliotheque_normal.png" id="3_mogh0"]
 [ext_resource type="Texture2D" uid="uid://8y0vkrppyn4q" path="res://assets/living room/salon_bibliotheque.png" id="4_j7inc"]
-[ext_resource type="Script" path="res://scripts/possessable.gd" id="5_weu2t"]
+[ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_weu2t"]
 [ext_resource type="AudioStream" uid="uid://bhywv65m3oipk" path="res://assets/SFX/salon/livres.ogg" id="6_mj6ii"]
 [ext_resource type="Texture2D" uid="uid://dtd56vblvdogx" path="res://assets/living room/salon_meubletv.png" id="7_joy5l"]
 [ext_resource type="Texture2D" uid="uid://bpjs17swraf4t" path="res://assets/living room/salon_tapis.png" id="8_s8sbf"]
@@ -17,6 +17,21 @@
 [ext_resource type="Texture2D" uid="uid://xreh1naohoar" path="res://assets/objects/salon_citrouille.png" id="14_mogh0"]
 [ext_resource type="Texture2D" uid="uid://r75hx56jw74l" path="res://assets/objects/salon_citrouillewink.png" id="15_j7inc"]
 [ext_resource type="Texture2D" uid="uid://dte4r5os58hrx" path="res://assets/living room/salon_lampeon.png" id="15_ppm0j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mogh0"]
+size = Vector2(399.09164, 173.50114)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7inc"]
+size = Vector2(442.75882, 183.72905)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_weu2t"]
+size = Vector2(304.55096, 183.72905)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_weu2t"]
+radius = 63.126858
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_mj6ii"]
+radius = 102.0049
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vki7j"]
 shader = ExtResource("2_j7inc")
@@ -274,13 +289,46 @@ fill_from = Vector2(0.45327103, 0.47196263)
 
 [node name="LivingRoom" type="Node2D"]
 
+[node name="SafeZones" type="Node" parent="."]
+
+[node name="Area2D" type="Area2D" parent="SafeZones" groups=["safezone"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SafeZones/Area2D" groups=["safezone"]]
+z_index = 1
+position = Vector2(255.05423, -43.2781)
+rotation = 0.55777293
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_mogh0")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="SafeZones/Area2D" groups=["safezone"]]
+z_index = 1
+position = Vector2(25, 130.00002)
+rotation = 0.4709517
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_j7inc")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="SafeZones/Area2D" groups=["safezone"]]
+z_index = 1
+position = Vector2(292.10742, -200.71098)
+rotation = 0.47095168
+scale = Vector2(0.99999976, 0.99999976)
+shape = SubResource("RectangleShape2D_weu2t")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="SafeZones/Area2D" groups=["safezone"]]
+position = Vector2(475, 99)
+shape = SubResource("CircleShape2D_weu2t")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="SafeZones/Area2D" groups=["safezone"]]
+position = Vector2(12, -157)
+shape = SubResource("CircleShape2D_mj6ii")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_6utvc")
 
 [node name="SalonBibliotheque" type="AnimatedSprite2D" parent="."]
 z_index = 1
 material = SubResource("ShaderMaterial_vki7j")
-position = Vector2(-533, -39)
+position = Vector2(-523, -23)
 sprite_frames = SubResource("SpriteFrames_g7sy5")
 animation = &"use"
 script = ExtResource("5_weu2t")
