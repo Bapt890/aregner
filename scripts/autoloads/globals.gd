@@ -16,13 +16,6 @@ var table_pnj1 = {
 	"Bookshelf": "fort",
 	"Lamp": "faible",
 	"Pumpkin": "faible",
-	"Sink": "faible",
-	"Duck": "faible",
-	"Toilet": "fort",
-	"Toaster": "faible",
-	"Fridge": "fort",
-	"Oven": "faible",
-	"Hood": "fort",
 }
 
 var table_pnj2 = {
@@ -30,13 +23,6 @@ var table_pnj2 = {
 	"TV": "faible",
 	"Pumpkin": "fort",
 	"Lamp": "fort",
-	"Sink": "fort",
-	"Duck": "faible",
-	"Toilet": "fort",
-	"Toaster": "faible",
-	"Fridge": "fort",
-	"Oven": "faible",
-	"Hood": "fort",
 }
 
 var max_time = 180.0
@@ -80,15 +66,12 @@ func calculate_fear(affinity, level):
 			return 8
 		elif affinity == "fort":
 			return 20
-		else:
-			return 30
 	elif level == "high":
 		if affinity == "faible":
 			return 18
 		elif affinity == "fort":
 			return 45
-		else:
-			return 30
+	
 	return 0
 
 func scare(pnj1, level):
