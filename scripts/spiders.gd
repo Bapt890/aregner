@@ -206,24 +206,7 @@ func update_spider_count():
 	
 	if new_count > old_count:
 		_initialize_spiders(new_count - old_count)
-	else:
-		for i in range(new_count, old_count):
-			if i < spider_sprites.size():
-				spider_sprites[i].queue_free()
-		
-		spider_sprites.resize(new_count)
-		positions.resize(new_count)
-		delays.resize(new_count)
-		targets.resize(new_count)
-		jump_progress.resize(new_count)
-		jump_start_pos.resize(new_count)
-		is_jumping.resize(new_count)
-		eject_positions.resize(new_count)
-		sprite_frames.resize(new_count)
-		frame_timers.resize(new_count)
-		facing_left.resize(new_count)
-		spider_scales.resize(new_count)
-		flip_timers.resize(new_count)
+
 
 func _on_move_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
