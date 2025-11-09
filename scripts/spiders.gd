@@ -200,13 +200,7 @@ func _get_spread() -> float:
 	return base_spread * sqrt(spider_count / 30.0)
 
 func update_spider_count():
-	var old_count = spider_count
-	var new_count = Globals.fear/4
-	spider_count = new_count
-	
-	if new_count > old_count:
-		_initialize_spiders(new_count - old_count)
-
+	pass
 
 func _on_move_area_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton:
