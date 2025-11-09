@@ -4,7 +4,6 @@ extends AnimatedSprite2D
 @export var animation_speed = 5.0
 @export var object_name = ""
 @export var required_spider = 1
-
 @export var shake_time = 0.3
 @export var shake_strength = 10.0
 @export var shake_angle = 0.07
@@ -12,7 +11,6 @@ extends AnimatedSprite2D
 
 var target_strength = 0.0
 var current_strength = 0.0
-
 var base_pos = Vector2.ZERO
 var base_rot = 0.0
 var shake_tween = null
@@ -22,6 +20,8 @@ func _ready():
 	area.mouse_entered.connect(_on_area_2d_mouse_entered)
 	area.mouse_exited.connect(_on_area_2d_mouse_exited)
 	area.input_event.connect(_on_area_2d_input_event)
+	area.area_entered.connect(_on_visible_by_pnj)
+	area.area_exited.connect(_on_unvisible_by_pnj)
 	base_pos = position
 	base_rot = rotation
 	SignalBus.use.connect(on_use)
@@ -42,12 +42,26 @@ func _on_area_2d_input_event(_viewport, event, _shape_idx):
 		#self.play("possessed")
 		Globals.current_object = object_name
 
+func _on_visible_by_pnj(area: Area2D):
+	if area.is_in_group("pnj1"):
+		Globals.pnj1_active = true
+	elif area.is_in_group("pnj2"):
+		Globals.pnj2_active = true
+
+func _on_unvisible_by_pnj(area: Area2D):
+	if area.is_in_group("pnj1"):
+		Globals.pnj1_active = false
+	elif area.is_in_group("pnj2"):
+		Globals.pnj2_active = false
+
 func on_use(level):
 	if Globals.current_object == object_name:
 		if level == "low":
 			start_shake()
+			Globals.scare("low")
 		else:
 			self.play("use")
+			Globals.scare("low")
 			if has_node("PointLight2D"):
 				var point_light = $PointLight2D
 				point_light.visible = true

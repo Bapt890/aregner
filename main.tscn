@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=19 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -27,10 +27,6 @@ func _ready() -> void:
 func fear_changed():
 	self.value = Globals.fear
 "
-
-[sub_resource type="Theme" id="Theme_ycdy4"]
-default_font = ExtResource("9_efxa6")
-default_font_size = 32
 
 [sub_resource type="GDScript" id="GDScript_5vw27"]
 resource_name = "timer"
@@ -80,7 +76,7 @@ height = 4
 
 [node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
 position = Vector2(-270, 75)
-target = NodePath("../Destinations/Destination")
+target = NodePath("../Destinations/Destination4")
 
 [node name="spiders" type="Node2D" parent="NPC" node_paths=PackedStringArray("move_sound", "jump_sound")]
 script = ExtResource("1_ig7tw")
@@ -181,70 +177,6 @@ offset_right = 1471.0
 offset_bottom = 925.0
 texture_normal = ExtResource("8_kek77")
 flip_h = true
-
-[node name="tutorial" type="Control" parent="CanvasLayer"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-theme = SubResource("Theme_ycdy4")
-
-[node name="E" type="TextureRect" parent="CanvasLayer/tutorial"]
-layout_mode = 0
-offset_left = 117.0
-offset_top = 257.0
-offset_right = 214.45883
-offset_bottom = 352.0
-texture = ExtResource("10_ycdy4")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="CanvasLayer/tutorial"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 352.0
-offset_right = 265.0
-offset_bottom = 391.0
-text = "Emprise Faible"
-horizontal_alignment = 1
-
-[node name="A" type="TextureRect" parent="CanvasLayer/tutorial"]
-layout_mode = 0
-offset_left = 117.0
-offset_top = 444.0
-offset_right = 214.68867
-offset_bottom = 539.0
-texture = ExtResource("10_dg77c")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="CanvasLayer/tutorial"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 540.0
-offset_right = 255.0
-offset_bottom = 579.0
-text = "Emprise Forte"
-horizontal_alignment = 1
-
-[node name="A2" type="TextureRect" parent="CanvasLayer/tutorial"]
-layout_mode = 0
-offset_left = 129.68867
-offset_top = 629.2066
-offset_right = 199.0
-offset_bottom = 741.48035
-texture = ExtResource("12_w48qg")
-expand_mode = 5
-
-[node name="Label3" type="Label" parent="CanvasLayer/tutorial"]
-layout_mode = 0
-offset_left = 78.0
-offset_top = 739.0
-offset_right = 244.0
-offset_bottom = 778.0
-text = "Deplacement"
-horizontal_alignment = 1
 
 [node name="Node2D" type="Node2D" parent="."]
 position = Vector2(-736, -446)

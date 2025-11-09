@@ -2,7 +2,7 @@ extends Node2D
 
 enum State {IDLE, WALK, INSPECT, CALL, TRAPPED}
 enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
-
+@export var id_pnj = 1
 const speed = 1000
 # The destination to go to
 @export var target : Destination = null
@@ -19,7 +19,13 @@ var spider_sighted: int = 0
 var objects_sighted: Array
 # Tween for movement
 @onready var tween : Tween = create_tween()
+@onready var sight_area: Area2D = $SightArea
 
+func _ready() -> void:
+	if id_pnj == 1:
+		sight_area.add_to_group("pnj1")
+	else:
+		sight_area.add_to_group("pnj2")
 func _process(delta):
 	if spider_sighted >= 1:
 		tween.stop()
