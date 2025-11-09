@@ -28,7 +28,6 @@ func _ready():
 
 func _process(delta):
 	current_strength = lerp(current_strength, target_strength, animation_speed * delta)
-	material.set_shader_parameter("strength", current_strength)
 
 func _on_area_2d_mouse_entered():
 	target_strength = hover_strength_size
@@ -39,7 +38,7 @@ func _on_area_2d_mouse_exited():
 func _on_area_2d_input_event(_viewport, event, _shape_idx):
 	if event is InputEventMouseButton:
 		SignalBus.possess.emit(object_name, global_position)
-		#self.play("possessed")
+		self.play("possessed")
 		Globals.current_object = object_name
 
 func _on_visible_by_pnj(area: Area2D):
@@ -62,6 +61,7 @@ func on_use(level):
 		else:
 			self.play("use")
 			Globals.scare("low")
+			$UsePlayer.play()
 			if has_node("PointLight2D"):
 				var point_light = $PointLight2D
 				point_light.visible = true
