@@ -35,6 +35,12 @@ folder_colors={
 "res://scripts/": "pink"
 }
 
+[global_group]
+
+object=""
+pnj1=""
+pnj2=""
+
 [input]
 
 use={
