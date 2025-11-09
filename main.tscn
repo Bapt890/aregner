@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=27 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -19,6 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
+
+[sub_resource type="Theme" id="Theme_yaehf"]
+default_font = ExtResource("9_efxa6")
+default_font_size = 32
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cegan"]
 bg_color = Color(0, 0, 0, 0.4117647)
@@ -197,7 +201,23 @@ sprite_frames = SubResource("SpriteFrames_5vw27")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 1310.0
+offset_top = 1162.0001
+offset_right = 1310.0
+offset_bottom = 1162.0
+grow_horizontal = 2
+grow_vertical = 2
+rotation = -1.5707964
+scale = Vector2(0.6, 0.6)
+theme = SubResource("Theme_yaehf")
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -212,20 +232,22 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/fill = SubResource("StyleBoxFlat_yaehf")
 script = SubResource("GDScript_272bh")
 
-[node name="ProgressBar5" type="TextureRect" parent="CanvasLayer"]
+[node name="ProgressBar5" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1824.0374
+offset_left = 1822.3431
 offset_top = 136.17755
-offset_right = 692.6489
+offset_right = 694.34326
 offset_bottom = -796.27594
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 texture = ExtResource("7_yaehf")
 
-[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar2" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -241,13 +263,14 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/fill = SubResource("StyleBoxFlat_82xsv")
 script = SubResource("GDScript_yaehf")
 
-[node name="ProgressBar6" type="TextureRect" parent="CanvasLayer"]
+[node name="ProgressBar6" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1659.0
+offset_left = 1657.3058
 offset_top = 206.0
-offset_right = 527.6116
+offset_right = 529.30566
 offset_bottom = -726.4535
 grow_horizontal = 2
 grow_vertical = 2
@@ -255,7 +278,8 @@ rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_yaehf")
 
-[node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer"]
+[node name="ProgressBar3" type="ProgressBar" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -271,19 +295,29 @@ theme_override_styles/background = SubResource("StyleBoxFlat_cegan")
 theme_override_styles/fill = SubResource("StyleBoxFlat_074og")
 script = SubResource("GDScript_074og")
 
-[node name="ProgressBar4" type="TextureRect" parent="CanvasLayer"]
+[node name="ProgressBar4" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 1659.0
+offset_left = 1657.3058
 offset_top = 544.0
-offset_right = 527.6116
+offset_right = 529.30566
 offset_bottom = -388.4535
 grow_horizontal = 2
 grow_vertical = 2
 rotation = 1.5707964
 scale = Vector2(0.4, 0.4)
 texture = ExtResource("7_yaehf")
+
+[node name="Araignée" type="TextureRect" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 1909.0
+offset_top = 318.0
+offset_right = 2352.0
+offset_bottom = 403.0
+rotation = 1.5707964
+texture = ExtResource("12_074og")
 
 [node name="ButtonLeft" type="TextureButton" parent="CanvasLayer"]
 offset_left = 494.0
@@ -316,14 +350,6 @@ offset_top = 858.0
 offset_right = 756.0
 offset_bottom = 1054.0
 texture = ExtResource("10_vivmo")
-
-[node name="Araignée" type="TextureRect" parent="CanvasLayer"]
-offset_left = 1909.0
-offset_top = 318.0
-offset_right = 2352.0
-offset_bottom = 403.0
-rotation = 1.5707964
-texture = ExtResource("12_074og")
 
 [node name="TextureRect2" type="TextureRect" parent="CanvasLayer"]
 offset_right = 40.0

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://ch3kkdvbuqiws"
+path="res://.godot/imported/fuite frigo.ogg-c6e8e7369a13f6bd332fcc08c3eae5b0.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/SFX/fuite frigo.ogg"
+dest_files=["res://.godot/imported/fuite frigo.ogg-c6e8e7369a13f6bd332fcc08c3eae5b0.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
