@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgg60cqb4c3vd"]
+[gd_scene load_steps=4 format=3 uid="uid://cgg60cqb4c3vd"]
 
 [ext_resource type="Texture2D" uid="uid://cgogj66t3nros" path="res://assets/UI/lost.png" id="1_y26ei"]
 [ext_resource type="Script" uid="uid://bs1cd3mthp1fn" path="res://scripts/game_over.gd" id="1_yxx3c"]
+[ext_resource type="AudioStream" uid="uid://cr4dwplo37yum" path="res://assets/SFX/game_over.mp3" id="3_ccer4"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -28,5 +29,9 @@ grow_vertical = 2
 theme_override_font_sizes/font_size = 64
 text = "Menu"
 flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ccer4")
+autoplay = true
 
 [connection signal="pressed" from="Label" to="." method="_on_label_pressed"]
