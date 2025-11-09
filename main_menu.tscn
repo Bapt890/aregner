@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvbgk030ern5w"]
+[gd_scene load_steps=15 format=3 uid="uid://dvbgk030ern5w"]
 
 [ext_resource type="Script" uid="uid://baexcjuo2kr5w" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="2_glbon"]
@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b3do3tkjq1gda" path="res://assets/UI/A.png" id="4_qe12f"]
 [ext_resource type="Texture2D" uid="uid://25qjtlvyjm1k" path="res://assets/UI/mouse.png" id="5_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://bdo5e87jojc18" path="res://assets/Credit.png" id="7_qe12f"]
+[ext_resource type="AudioStream" uid="uid://btq4m48gadra" path="res://assets/SFX/Eleazar-Floirat-musiquemenu-_1_.mp3" id="8_8qtwp"]
 
 [sub_resource type="Theme" id="Theme_dy7ct"]
 default_font = ExtResource("2_glbon")
@@ -103,10 +104,10 @@ offset_bottom = 1080.0
 texture = ExtResource("2_nlkkf")
 
 [node name="start" type="Button" parent="."]
-offset_left = 338.0
-offset_top = 468.0
+offset_left = 315.0
+offset_top = 561.0
 offset_right = 1574.0
-offset_bottom = 693.0
+offset_bottom = 688.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8qtwp")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dy7ct")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0o4t1")
@@ -114,8 +115,8 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0k4wn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j5v2v")
 
 [node name="start2" type="Button" parent="."]
-offset_left = 318.0
-offset_top = 709.0
+offset_left = 375.0
+offset_top = 833.0
 offset_right = 1554.0
 offset_bottom = 934.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8qtwp")
@@ -130,6 +131,10 @@ offset_right = 1921.0
 offset_bottom = 1080.0
 texture_normal = ExtResource("7_qe12f")
 texture_pressed = ExtResource("7_qe12f")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_8qtwp")
+autoplay = true
 
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="start2" to="." method="_on_start_2_pressed"]
