@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=16 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -24,48 +24,6 @@ func fear_changed():
 	self.value = Globals.fear
 "
 
-[sub_resource type="GDScript" id="GDScript_5vw27"]
-resource_name = "timer"
-script/source = "extends Node2D
-
-@onready var watch_hand = $WatchHand
-
-func _ready():
-
-	Globals.connect(\"timer_changed\", _on_timer_changed)
-
-	update_watch_hand(Globals.time_remaining)
-
-func _on_timer_changed(time_remaining):
-	update_watch_hand(time_remaining)
-
-func update_watch_hand(time_remaining):
-
-	var progress = time_remaining / Globals.max_time
-	var angle = progress * 360.0
-	watch_hand.rotation_degrees = angle
-"
-
-[sub_resource type="Gradient" id="Gradient_5vw27"]
-offsets = PackedFloat32Array(0.33333334, 0.34, 0.36)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0.61333334, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_kek77"]
-gradient = SubResource("Gradient_5vw27")
-width = 256
-height = 256
-fill = 1
-fill_from = Vector2(0.46728972, 0.5)
-
-[sub_resource type="Gradient" id="Gradient_4c57u"]
-offsets = PackedFloat32Array(0.02, 1)
-colors = PackedColorArray(1, 0, 0, 1, 1, 0, 0, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_efxa6"]
-gradient = SubResource("Gradient_4c57u")
-width = 60
-height = 4
-
 [node name="Main" type="Node2D"]
 
 [node name="NPC" type="Node" parent="."]
@@ -77,6 +35,7 @@ target = NodePath("../Destinations/KJob")
 [node name="spiders" type="Node2D" parent="NPC" node_paths=PackedStringArray("move_sound", "jump_sound")]
 script = ExtResource("1_ig7tw")
 spider_count = 5
+move_speed = 500.0
 base_spread = 200.0
 spider_scale = 0.6999999999970896
 spritesheet = ExtResource("2_0xm2m")
@@ -215,16 +174,15 @@ offset_bottom = 925.0
 texture_normal = ExtResource("8_kek77")
 flip_h = true
 
-[node name="Node2D" type="Node2D" parent="."]
-position = Vector2(-736, -446)
-script = SubResource("GDScript_5vw27")
-
-[node name="Sprite2D2" type="Sprite2D" parent="Node2D"]
-texture = SubResource("GradientTexture2D_kek77")
-
-[node name="WatchHand" type="Sprite2D" parent="Node2D"]
-texture = SubResource("GradientTexture2D_efxa6")
-offset = Vector2(29, 0)
+[node name="Label" type="Label" parent="CanvasLayer"]
+offset_left = 95.0
+offset_top = 75.0
+offset_right = 281.0
+offset_bottom = 153.0
+theme_override_fonts/font = ExtResource("9_efxa6")
+theme_override_font_sizes/font_size = 64
+text = "00:00"
+script = ExtResource("9_ycdy4")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_5vw27")
