@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cfs6ouh4nwmo6"
-path="res://.godot/imported/salon_bibliotheque_normal.png-bf0b76dc7c948b85b3711d9dead75c82.ctex"
+uid="uid://wtcthbdt2egu"
+path="res://.godot/imported/spritesheetbibli.png-377fe0bc5844a5aca01071d2a424ccf6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/living room/salon_bibliotheque_normal.png"
-dest_files=["res://.godot/imported/salon_bibliotheque_normal.png-bf0b76dc7c948b85b3711d9dead75c82.ctex"]
+source_file="res://assets/living room/spritesheetbibli.png"
+dest_files=["res://.godot/imported/spritesheetbibli.png-377fe0bc5844a5aca01071d2a424ccf6.ctex"]
 
 [params]
 

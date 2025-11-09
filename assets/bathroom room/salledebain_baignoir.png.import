@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://8y0vkrppyn4q"
-path="res://.godot/imported/salon_bibliotheque.png-a049f25028dd3f53ecb22d6ab5e8081c.ctex"
+uid="uid://cie1bhv08mmyi"
+path="res://.godot/imported/salledebain_baignoir.png-dafa7bda4ffc0d75923b2d0306d0c91c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/living room/salon_bibliotheque.png"
-dest_files=["res://.godot/imported/salon_bibliotheque.png-a049f25028dd3f53ecb22d6ab5e8081c.ctex"]
+source_file="res://assets/bathroom room/salledebain_baignoir.png"
+dest_files=["res://.godot/imported/salledebain_baignoir.png-dafa7bda4ffc0d75923b2d0306d0c91c.ctex"]
 
 [params]
 
