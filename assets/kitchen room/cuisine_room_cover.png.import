@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dv0mqw8owx4oq"
-path="res://.godot/imported/salon_off.png-c6a3fee3c41f7bebe1916dec0fc3828c.ctex"
+uid="uid://b11h1j5nlgruu"
+path="res://.godot/imported/cuisine_room_cover.png-ab13b8e42c02809f1fd0c9123860700b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/salon_off.png"
-dest_files=["res://.godot/imported/salon_off.png-c6a3fee3c41f7bebe1916dec0fc3828c.ctex"]
+source_file="res://assets/kitchen room/cuisine_room_cover.png"
+dest_files=["res://.godot/imported/cuisine_room_cover.png-ab13b8e42c02809f1fd0c9123860700b.ctex"]
 
 [params]
 

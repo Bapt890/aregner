@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://7j1od1qia3u1"]
+
+[ext_resource type="Texture2D" uid="uid://ciyukst36vwky" path="res://assets/kitchen room/cuisine_room.png" id="1_iclwl"]
+[ext_resource type="Texture2D" uid="uid://b11h1j5nlgruu" path="res://assets/kitchen room/cuisine_room_cover.png" id="2_w4jdc"]
+
+[node name="KitchenRoom" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = -2
+texture = ExtResource("1_iclwl")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+z_index = 1
+texture = ExtResource("2_w4jdc")

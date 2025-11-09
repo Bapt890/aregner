@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://duxmro6csxpt1"]
+
+[ext_resource type="Texture2D" uid="uid://buomj1allgrv1" path="res://assets/web.png" id="1_c0mqh"]
+[ext_resource type="AudioStream" uid="uid://s7gffhpkf4fd" path="res://assets/SFX/popweb.mp3" id="2_122qx"]
+
+[sub_resource type="GDScript" id="GDScript_122qx"]
+resource_name = "popweb"
+script/source = "extends Sprite2D
+
+func _ready():
+
+	scale = Vector2(0.01, 0.01)
+	rotation = randf_range(-1, 1)
+	
+
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_CUBIC)
+	tween.set_ease(Tween.EASE_OUT)
+
+	tween.tween_property(self, \"scale\", Vector2(0.3, 0.3), 0.4)
+	
+	tween.tween_interval(0.3)
+	
+	tween.tween_property(self, \"modulate:a\", 0.0, 0.5)
+	
+	tween.tween_callback(queue_free)
+"
+
+[node name="PopWeb" type="Sprite2D"]
+texture = ExtResource("1_c0mqh")
+script = SubResource("GDScript_122qx")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_122qx")
+autoplay = true

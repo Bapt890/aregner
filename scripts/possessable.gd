@@ -19,7 +19,7 @@ var current_strength = 0.0
 var base_pos = Vector2.ZERO
 var base_rot = 0.0
 var shake_tween = null
-
+var popweb = preload("res://scene/pop_web.tscn")
 func _ready():
 	var area = $Area2D
 	area.mouse_entered.connect(_on_area_2d_mouse_entered)
@@ -35,15 +35,20 @@ func _process(delta):
 
 func _on_area_2d_mouse_entered():
 	target_strength = hover_strength_size
+	start_bounce()
 
 func _on_area_2d_mouse_exited():
 	target_strength = 0.0
+	end_bounce()
 
 func _on_area_2d_input_event(viewport, event, shape_idx):
-	if event is InputEventMouseButton:
+	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 		SignalBus.possess.emit(object_name, global_position)
 		Globals.current_object = object_name
-		start_bounce()
+		self.play("possessed")
+		var instance = popweb.instantiate()
+		add_child(instance)
+		
 
 func on_use(level):
 	if Globals.current_object == object_name:
@@ -63,6 +68,9 @@ func start_bounce():
 	var bounce_tween = create_tween()
 	bounce_tween.set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	bounce_tween.tween_property(self, "scale", Vector2.ONE * bounce_scale, bounce_duration * 0.5)
+
+func end_bounce():
+	var bounce_tween = create_tween()
 	bounce_tween.set_trans(Tween.TRANS_ELASTIC).set_ease(Tween.EASE_OUT)
 	bounce_tween.tween_property(self, "scale", Vector2.ONE, bounce_duration * 0.5)
 
@@ -85,6 +93,7 @@ func start_shake():
 		shake_tween.parallel().tween_property(self, "rotation", base_rot, step_time * 0.3)
 	
 	shake_tween.finished.connect(_on_shake_finished)
+	self.play("default")
 
 func _on_shake_finished():
 	position = base_pos

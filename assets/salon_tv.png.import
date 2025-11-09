@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xreh1naohoar"
-path="res://.godot/imported/salon_citrouille.png-1b6d0ab6d0a6ecfb5d64b2849687470a.ctex"
+uid="uid://dje2r508gjsg8"
+path="res://.godot/imported/salon_tv.png-d4768b1eb3f56b5b9cf9a6ce1257f902.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/salon_citrouille.png"
-dest_files=["res://.godot/imported/salon_citrouille.png-1b6d0ab6d0a6ecfb5d64b2849687470a.ctex"]
+source_file="res://assets/salon_tv.png"
+dest_files=["res://.godot/imported/salon_tv.png-d4768b1eb3f56b5b9cf9a6ce1257f902.ctex"]
 
 [params]
 

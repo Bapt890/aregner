@@ -85,9 +85,9 @@ func _initialize_spiders(count: int):
 		_update_visual(i)
 
 func _process(delta: float):
-	if Input.is_action_pressed("use"):
+	if Input.is_action_just_pressed("use"):
 		SignalBus.emit_signal("use", "low")
-	elif Input.is_action_pressed("use_strong"):
+	elif Input.is_action_just_pressed("use_strong"):
 		SignalBus.emit_signal("use", "high")
 	
 	var all_finished = true
@@ -200,7 +200,7 @@ func _get_spread() -> float:
 
 func update_spider_count():
 	var old_count = spider_count
-	var new_count = Globals.fear
+	var new_count = Globals.fear/4
 	spider_count = new_count
 	
 	if new_count > old_count:

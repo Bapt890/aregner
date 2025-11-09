@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d17hmm0bwkb58"
-path="res://.godot/imported/salon_tvneige.png-b02098959a0567763d6520606b059bea.ctex"
+uid="uid://dv0mqw8owx4oq"
+path="res://.godot/imported/salon_off.png-8fe244e9bf7b71ad720ba03285c2cf29.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/salon_tvneige.png"
-dest_files=["res://.godot/imported/salon_tvneige.png-b02098959a0567763d6520606b059bea.ctex"]
+source_file="res://assets/salon_off.png"
+dest_files=["res://.godot/imported/salon_off.png-8fe244e9bf7b71ad720ba03285c2cf29.ctex"]
 
 [params]
 
