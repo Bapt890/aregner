@@ -6,6 +6,7 @@ enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
 const speed = 1000
 # The destination to go to
 @export var target : Destination = null
+@export_enum("Male", "Female") var gender : int
 var current_destination : Destination = null
 # Objects in FOV
 var sighted_objects : Array
@@ -27,28 +28,42 @@ func _ready() -> void:
 	else:
 		sight_area.add_to_group("pnj2")
 func _process(delta):
+	# Stops when it sees spiders
 	if spider_sighted >= 1:
 		tween.stop()
 		current_state = State.CALL
+	# For sprite changing
+	var prefix = "fe" if gender == 1 else ""
 	match current_state:
 		State.WALK:
+			if !$AnimationPlayer.is_playing(): 
+				$AnimationPlayer.play()
 			if position.distance_to(previous_pos) <= 0.01 * delta: 
 				# Stopped moving
+				current_destination = target
 				# Pauses according to reached destination
 				if target.cause_stop: 
-					current_destination = target
 					current_orientation = current_destination.orientation as Orientation
 					target = null
 					doing_job = true
 					current_state = State.IDLE
+				# Teleports
+				#elif target.teleport_destination:
+					#global_position = target.teleport_destination.global_position
+					#current_orientation = target.teleport_destination.orientation as Orientation
+					#target = target.teleport_destination.get_random_destination()
+					#current_orientation = current_destination.get_path_orientation() as Orientation
+					#go_to()
 				# Gives new destination
-				else: 
-					current_destination = target
+				else:
 					target = target.get_random_destination()
 					current_orientation = current_destination.get_path_orientation() as Orientation
 					go_to()
 			previous_pos = position
 		State.IDLE:
+			if $AnimationPlayer.is_playing(): 
+				$AnimationPlayer.stop()
+			# If it does a job, wait for the job to end
 			if doing_job:
 				doing_job = false
 				current_destination.start_job()
@@ -64,10 +79,31 @@ func _process(delta):
 			#await $Timer.timeout
 			#Globals._on_game_over()
 	match current_orientation:
-		Orientation.UPLEFT: $SightArea/Polygon2D.rotation_degrees = 135
-		Orientation.UPRIGHT: $SightArea/Polygon2D.rotation_degrees = 225
-		Orientation.DOWNLEFT: $SightArea/Polygon2D.rotation_degrees = 45
-		Orientation.DOWNRIGHT: $SightArea/Polygon2D.rotation_degrees = 315
+		Orientation.UPLEFT: 
+			$SightArea/Polygon2D.rotation_degrees = 135
+			change_sprite("res://assets/npc/%smale_walk_back.png" % prefix, \
+				"res://assets/npc/%smale_idle_back.png" % prefix)
+			$Sprite2D.flip_h = true
+		Orientation.UPRIGHT: 
+			$SightArea/Polygon2D.rotation_degrees = 225
+			change_sprite("res://assets/npc/male_walk_back.png", "res://assets/npc/male_idle_back.png")
+			$Sprite2D.flip_h = false
+		Orientation.DOWNLEFT: 
+			$SightArea/Polygon2D.rotation_degrees = 45
+			change_sprite("res://assets/npc/male_walk_front.png", "res://assets/npc/male_idle_front.png")
+			$Sprite2D.flip_h = false
+		Orientation.DOWNRIGHT: 
+			$SightArea/Polygon2D.rotation_degrees = 315
+			change_sprite("res://assets/npc/male_walk_front.png", "res://assets/npc/male_idle_front.png")
+			$Sprite2D.flip_h = true
+
+func change_sprite(walk : String, idle : String):
+	if current_state == State.WALK:
+		$Sprite2D.hframes = 4
+		$Sprite2D.texture = load(walk)
+	else:
+		$Sprite2D.hframes = 1
+		$Sprite2D.texture = load(idle)
 
 func wait_job():
 	target.start_job()

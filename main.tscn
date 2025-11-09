@@ -9,12 +9,8 @@
 [ext_resource type="AudioStream" uid="uid://df7tkluxjl5au" path="res://assets/SFX/spider.ogg" id="4_kek77"]
 [ext_resource type="AudioStream" uid="uid://bat8y31tjwrwr" path="res://assets/SFX/prototypejenaimarre.ogg" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ddtadj4ipd1r0" path="res://assets/arrow.png" id="8_kek77"]
-[ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="9_efxa6"]
-[ext_resource type="Texture2D" uid="uid://b3do3tkjq1gda" path="res://assets/UI/A.png" id="10_dg77c"]
-[ext_resource type="Texture2D" uid="uid://d1jfegrme7l14" path="res://assets/UI/E.png" id="10_ycdy4"]
-[ext_resource type="Texture2D" uid="uid://25qjtlvyjm1k" path="res://assets/UI/mouse.png" id="12_w48qg"]
-[ext_resource type="Script" path="res://move_rooms.gd" id="13_vivmo"]
-[ext_resource type="PackedScene" path="res://kitchen_room.tscn" id="14_w48qg"]
+[ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
+[ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 
@@ -75,8 +71,8 @@ height = 4
 [node name="NPC" type="Node" parent="."]
 
 [node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
-position = Vector2(-270, 75)
-target = NodePath("../Destinations/Destination4")
+position = Vector2(1911, -55)
+target = NodePath("../Destinations/KJob")
 
 [node name="spiders" type="Node2D" parent="NPC" node_paths=PackedStringArray("move_sound", "jump_sound")]
 script = ExtResource("1_ig7tw")
@@ -111,30 +107,71 @@ polygon = PackedVector2Array(616, 157, 353, 0, 250, 58, 0, -94, -85, -44, -174, 
 
 [node name="Destinations" type="Node" parent="NPC"]
 
-[node name="Destination" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-279, 277)
+[node name="K" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(1822, 155)
+linked_destinations = [NodePath("../K2"), NodePath("../KJob"), NodePath("../KTransLR")]
+destination_orientation = Array[int]([1, 1, 2])
+
+[node name="K2" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(2023, 150)
+linked_destinations = [NodePath("../K"), NodePath("../KJob"), NodePath("../KTransB")]
+destination_orientation = Array[int]([2, 0, 3])
+
+[node name="KJob" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
+position = Vector2(1926, -29)
 cause_stop = true
 stop_duration = 2
-linked_destinations = [NodePath("../Destination2"), NodePath("../Destination3"), NodePath("../Destination4")]
-destination_orientation = Array[int]([3, 1, 1])
+orientation = 1
+linked_destinations = [NodePath("../K"), NodePath("../K2")]
+destination_orientation = Array[int]([2, 3])
 
-[node name="Destination2" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(2, 413)
-orientation = 3
-linked_destinations = [NodePath("../Destination"), NodePath("../Destination3"), NodePath("../Destination4")]
-destination_orientation = Array[int]([0, 0, 1])
+[node name="KTransLR" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations", "teleport_destination") instance=ExtResource("3_kek77")]
+position = Vector2(1634, 281)
+linked_destinations = [NodePath("../K")]
+destination_orientation = Array[int]([1])
+teleport_destination = NodePath("../LRTransK")
 
-[node name="Destination3" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(-223, -18)
-orientation = 3
-linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination4")]
-destination_orientation = Array[int]([3, 2, 3])
+[node name="KTransB" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations", "teleport_destination") instance=ExtResource("3_kek77")]
+position = Vector2(2235, 285)
+linked_destinations = [NodePath("../K2")]
+destination_orientation = Array[int]([0])
+teleport_destination = NodePath("../BTransK")
 
-[node name="Destination4" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations") instance=ExtResource("3_kek77")]
-position = Vector2(252, 293)
-orientation = 3
-linked_destinations = [NodePath("../Destination2"), NodePath("../Destination"), NodePath("../Destination3")]
-destination_orientation = Array[int]([2, 2, 0])
+[node name="LRTransK" parent="NPC/Destinations" node_paths=PackedStringArray("linked_destinations", "teleport_destination") instance=ExtResource("3_kek77")]
+position = Vector2(301, 285)
+linked_destinations = [NodePath("../LR"), NodePath("../LR2")]
+destination_orientation = Array[int]([1, 0])
+teleport_destination = NodePath("../KTransLR")
+
+[node name="LR" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(417, 207)
+
+[node name="LR2" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-384, 129)
+
+[node name="LR3" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-41, -76)
+
+[node name="LRTransK3" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-82, -75)
+
+[node name="LRTransB" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-309, 290)
+
+[node name="BTransLR" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-1614, 285)
+
+[node name="BTransK" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-2198, 298)
+
+[node name="B" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-1902, -8)
+
+[node name="B1" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-1996, 101)
+
+[node name="B2" parent="NPC/Destinations" instance=ExtResource("3_kek77")]
+position = Vector2(-1806, 103)
 
 [node name="Camera" type="Camera2D" parent="."]
 

@@ -20,20 +20,18 @@ func _on_button_left_pressed() -> void:
 		return
 	
 	match current_state:
-		CameraState.MIDDLE:
-			move_camera_to(POSITION_LEFT, CameraState.LEFT)
-		CameraState.RIGHT:
-			move_camera_to(POSITION_MIDDLE, CameraState.MIDDLE)
+		CameraState.MIDDLE: move_camera_to(POSITION_LEFT, CameraState.LEFT)
+		CameraState.RIGHT: move_camera_to(POSITION_MIDDLE, CameraState.MIDDLE)
+		CameraState.LEFT: move_camera_to(POSITION_RIGHT, CameraState.RIGHT)
 
 func _on_button_right_pressed() -> void:
 	if is_tweening:
 		return
 	
 	match current_state:
-		CameraState.LEFT:
-			move_camera_to(POSITION_MIDDLE, CameraState.MIDDLE)
-		CameraState.MIDDLE:
-			move_camera_to(POSITION_RIGHT, CameraState.RIGHT)
+		CameraState.LEFT: move_camera_to(POSITION_MIDDLE, CameraState.MIDDLE)
+		CameraState.MIDDLE: move_camera_to(POSITION_RIGHT, CameraState.RIGHT)
+		CameraState.RIGHT: move_camera_to(POSITION_LEFT, CameraState.LEFT)
 
 func move_camera_to(target_x: float, new_state: CameraState) -> void:
 	is_tweening = true
@@ -51,13 +49,14 @@ func on_tween_completed(new_state: CameraState) -> void:
 	update_button_visibility()
 
 func update_button_visibility() -> void:
-	match current_state:
-		CameraState.LEFT:
-			button_left.visible = false
-			button_right.visible = true
-		CameraState.MIDDLE:
-			button_left.visible = true
-			button_right.visible = true
-		CameraState.RIGHT:
-			button_left.visible = true
-			button_right.visible = false
+	pass
+	#match current_state:
+		#CameraState.LEFT:
+			#button_left.visible = false
+			#button_right.visible = true
+		#CameraState.MIDDLE:
+			#button_left.visible = true
+			#button_right.visible = true
+		#CameraState.RIGHT:
+			#button_left.visible = true
+			#button_right.visible = false
