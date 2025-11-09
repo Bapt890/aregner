@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://dn2kmxqg0v0xc" path="res://countdown.gd" id="9_ycdy4"]
 [ext_resource type="Texture2D" uid="uid://c1l4r7vns6seh" path="res://assets/contols.png" id="10_vivmo"]
 [ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
-[ext_resource type="PackedScene" path="res://bath_room.tscn" id="13_w48qg"]
+[ext_resource type="PackedScene" uid="uid://46bdfyfs2pcc" path="res://bath_room.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
@@ -84,12 +84,14 @@ func fear_changed():
 
 [node name="NPC" type="Node" parent="."]
 
-[node name="NPC" parent="NPC" instance=ExtResource("2_5vw27")]
+[node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
 position = Vector2(1940, 385)
+target = NodePath("../Destinations/KJobFridge")
 
-[node name="NPC2" parent="NPC" instance=ExtResource("2_5vw27")]
+[node name="NPC2" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
 position = Vector2(-1506, 159)
 id_pnj = 2
+target = NodePath("../Destinations/BJobPiss")
 
 [node name="spiders" type="Node2D" parent="NPC" node_paths=PackedStringArray("move_sound", "jump_sound")]
 script = ExtResource("1_ig7tw")
