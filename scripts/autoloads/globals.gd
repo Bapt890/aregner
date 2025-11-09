@@ -45,8 +45,8 @@ func start_game():
 	time_remaining = max_time
 	current_object = "none"
 
-func set_current_object(name):
-	current_object = name
+func set_current_object(object_name):
+	current_object = object_name
 
 func set_pnj_active(pnj_name, active):
 	if pnj_name == "pnj1":

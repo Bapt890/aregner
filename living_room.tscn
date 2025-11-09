@@ -1,7 +1,7 @@
 [gd_scene load_steps=52 format=4 uid="uid://dmo6ch2xreba2"]
 
 [ext_resource type="Texture2D" uid="uid://b2lijaw5bxokh" path="res://assets/living room/salon_room.png" id="1_6utvc"]
-[ext_resource type="Shader" path="res://glow.gdshader" id="2_j7inc"]
+[ext_resource type="Shader" uid="uid://dyacwyt1jotmf" path="res://glow.gdshader" id="2_j7inc"]
 [ext_resource type="Texture2D" uid="uid://dj0esv84gqibk" path="res://assets/living room/salon_room_cover.png" id="2_joy5l"]
 [ext_resource type="Texture2D" uid="uid://wtcthbdt2egu" path="res://assets/living room/spritesheetbibli.png" id="4_mj6ii"]
 [ext_resource type="Script" uid="uid://iul2essonv5y" path="res://scripts/possessable.gd" id="5_weu2t"]
