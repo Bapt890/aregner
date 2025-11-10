@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dvbgk030ern5w"]
+[gd_scene load_steps=17 format=3 uid="uid://dvbgk030ern5w"]
 
 [ext_resource type="Script" uid="uid://baexcjuo2kr5w" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="2_glbon"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://25qjtlvyjm1k" path="res://assets/UI/mouse.png" id="5_8qtwp"]
 [ext_resource type="Texture2D" uid="uid://bdo5e87jojc18" path="res://assets/Credit.png" id="7_qe12f"]
 [ext_resource type="AudioStream" uid="uid://btq4m48gadra" path="res://assets/SFX/Eleazar-Floirat-musiquemenu-_1_.mp3" id="8_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://bpahkdymxv4ih" path="res://assets/controles.png" id="9_dy7ct"]
 
 [sub_resource type="Theme" id="Theme_dy7ct"]
 default_font = ExtResource("2_glbon")
@@ -22,6 +23,8 @@ default_font_size = 32
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0k4wn"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5v2v"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iotk1"]
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource("1_06t4h")
@@ -99,15 +102,17 @@ text = "Deplacement"
 horizontal_alignment = 1
 
 [node name="Mainmenu" type="TextureRect" parent="."]
-offset_right = 1926.0
-offset_bottom = 1080.0
+offset_left = 1.0
+offset_top = -5.0
+offset_right = 1927.0
+offset_bottom = 1075.0
 texture = ExtResource("2_nlkkf")
 
 [node name="start" type="Button" parent="."]
-offset_left = 315.0
-offset_top = 561.0
-offset_right = 1574.0
-offset_bottom = 688.0
+offset_left = 783.0
+offset_top = 572.0
+offset_right = 1044.0
+offset_bottom = 675.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8qtwp")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dy7ct")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0o4t1")
@@ -115,10 +120,10 @@ theme_override_styles/disabled = SubResource("StyleBoxEmpty_0k4wn")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_j5v2v")
 
 [node name="start2" type="Button" parent="."]
-offset_left = 375.0
-offset_top = 833.0
-offset_right = 1554.0
-offset_bottom = 934.0
+offset_left = 788.0
+offset_top = 831.0
+offset_right = 1032.0
+offset_bottom = 928.0
 theme_override_styles/normal = SubResource("StyleBoxEmpty_8qtwp")
 theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dy7ct")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_0o4t1")
@@ -136,6 +141,20 @@ texture_pressed = ExtResource("7_qe12f")
 stream = ExtResource("8_8qtwp")
 autoplay = true
 
+[node name="controles" type="Button" parent="."]
+offset_left = 808.0
+offset_top = 687.0
+offset_right = 1140.0
+offset_bottom = 809.0
+theme_override_styles/normal = SubResource("StyleBoxEmpty_iotk1")
+
+[node name="TextureRect3" type="TextureRect" parent="."]
+visible = false
+offset_right = 1927.0
+offset_bottom = 1074.0
+texture = ExtResource("9_dy7ct")
+
 [connection signal="pressed" from="start" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="start2" to="." method="_on_start_2_pressed"]
 [connection signal="pressed" from="TextureRect2" to="." method="_on_texture_rect_2_pressed"]
+[connection signal="pressed" from="controles" to="." method="_on_controles_pressed"]
