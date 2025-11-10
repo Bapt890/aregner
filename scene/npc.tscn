@@ -58,10 +58,9 @@ border_width_top = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 
-[node name="NPC" type="Node2D" node_paths=PackedStringArray("detection_bar")]
+[node name="NPC" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("1_54ctn")
-detection_bar = NodePath("ProgressBar")
 
 [node name="EmoteSprite" type="Sprite2D" parent="."]
 visible = false

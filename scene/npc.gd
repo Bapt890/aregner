@@ -1,169 +1,143 @@
 extends Node2D
 
-enum State {IDLE, WALK, INSPECT, CALL, TRAPPED}
-enum Orientation {UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT}
+# Minimal patrol:
+# - Put Marker2D children under route_parent in order.
+# - Metadata on each Marker2D:
+#     wait          -> number of seconds to pause on arrival (default 0)
+#     arrive_orient -> "UPLEFT" | "UPRIGHT" | "DOWNLEFT" | "DOWNRIGHT" or 0..3
+
+enum State { IDLE, WALK }
+enum Orientation { UPLEFT, UPRIGHT, DOWNLEFT, DOWNRIGHT }
+
 @export_enum("Male:1", "Female:2") var id_pnj = 1
-@export var speed = 300
+@export var speed = 300.0
+@export var route_parent: Node2D
 
-@export var target : Destination = null
-var current_destination : Destination = null
+var _markers = []       # Marker2D[]
+var _idx = 0
+var _state = State.IDLE
+var _orientation = Orientation.UPLEFT
+var _tween = null
 
-@export var detection_bar: ProgressBar
-@export var detection_time_to_fill := 50      # seconds to go 0 -> 100% while seeing player
-@export var detection_time_to_empty := 1.5     # seconds to go 100% -> 0 when player lost
-var detection := 0.0
-var gameover_fired := false
-
-var sighted_objects : Array
-var current_state = State.IDLE
-var current_orientation = Orientation.UPLEFT
-var previous_pos : Vector2 = Vector2.ZERO
-var doing_job: bool = false
-var spider_sighted: int = 0
-var objects_sighted: Array
-
-@onready var tween : Tween = create_tween()
-@onready var sight_area: Area2D = $SightArea
-
-func _ready() -> void:
-	if id_pnj == 1:
-		sight_area.add_to_group("pnj1")
-	else:
-		sight_area.add_to_group("pnj2")
-	if detection_bar:
-		detection_bar.min_value = 0.0
-		detection_bar.max_value = 1.0
-		detection_bar.value = 0.0
-		detection_bar.visible = true
+func _ready():
+	_collect_markers()
+	if _markers.size() == 0:
+		push_warning("No Marker2D found under 'route_parent'.")
+		return
+	global_position = _markers[0].global_position
+	if _markers.size() > 1:
+		_go_to(1)  # start heading to the second point
 
 func _process(delta):
+	if _state == State.WALK and _markers.size() > 0:
+		var to_pos = _markers[_idx].global_position
+		var dir = to_pos - global_position
+		_update_orientation_from_vector(dir)
+		_update_animation()
 
-	if spider_sighted > 0:
+func _collect_markers():
+	_markers.clear()
+	if route_parent:
+		for c in route_parent.get_children():
+			if c is Marker2D:
+				_markers.append(c)
 
-		if detection_time_to_fill > 0.0:
-			detection += delta / detection_time_to_fill
-		current_state = State.CALL
-		tween.stop()
+func _go_to(next_index):
+	if _markers.size() < 2:
+		return
+	_idx = next_index % _markers.size()
+	var to_pos = _markers[_idx].global_position
+	var dist = global_position.distance_to(to_pos)
+	var dur = 0.0001
+	if dist > 0.0:
+		dur = dist / speed
+
+	if _tween:
+		_tween.kill()
+
+	_tween = create_tween()
+	_state = State.WALK
+	_update_animation()
+	_tween.tween_property(self, "global_position", to_pos, dur)
+	_tween.finished.connect(func(): _on_arrive())
+
+func _on_arrive():
+	_state = State.IDLE
+	_update_animation()
+
+	# Read arrival metadata on the current marker
+	var m = _markers[_idx]
+	var wait_sec = 0.0
+	if m.has_meta("wait"):
+		var mw = m.get_meta("wait")
+		if typeof(mw) == TYPE_FLOAT or typeof(mw) == TYPE_INT:
+			wait_sec = max(0.0, float(mw))
+		elif typeof(mw) == TYPE_STRING:
+			var parsed = String(mw).to_float()
+			if parsed == parsed:
+				wait_sec = max(0.0, parsed)
+
+	if m.has_meta("arrive_orient"):
+		var o = _parse_orient(m.get_meta("arrive_orient"))
+		if o != -1:
+			_orientation = o
+			_update_animation()
+
+	if wait_sec > 0.0:
+		await get_tree().create_timer(wait_sec).timeout
+
+	_go_to(_idx + 1) # simple loop
+
+func _update_orientation_from_vector(v):
+	# 4-way facing based on direction
+	if v.y < 0:
+		if v.x < 0:
+			_orientation = Orientation.UPLEFT
+		else:
+			_orientation = Orientation.UPRIGHT
 	else:
+		if v.x < 0:
+			_orientation = Orientation.DOWNLEFT
+		else:
+			_orientation = Orientation.DOWNRIGHT
 
-		if detection_time_to_empty > 0.0:
-			detection -= delta / detection_time_to_empty
+func _parse_orient(val):
+	if typeof(val) == TYPE_INT:
+		var oi = int(val)
+		if oi >= 0 and oi <= 3:
+			return oi
+	elif typeof(val) == TYPE_STRING:
+		var s = String(val).to_upper()
+		if s == "UPLEFT": return Orientation.UPLEFT
+		if s == "UPRIGHT": return Orientation.UPRIGHT
+		if s == "DOWNLEFT": return Orientation.DOWNLEFT
+		if s == "DOWNRIGHT": return Orientation.DOWNRIGHT
+	return -1
 
-
-	detection = clamp(detection, 0.0, 1.0)
-
-	if detection_bar:
-		detection_bar.value = detection
-
-		detection_bar.visible = detection > 0.01
-
-	if detection >= 1.0 and not gameover_fired:
-		gameover_fired = true
-		Globals._on_game_over()
-		return  
+func _update_animation():
 	var prefix = "fe" if id_pnj == 2 else ""
-	match current_state:
-		State.WALK:
-			if !$AnimationPlayer.is_playing(): 
-				$AnimationPlayer.play()
-			if position.distance_to(previous_pos) <= 0.01 * delta: 
-
-				current_destination = target
-
-				if target.cause_stop: 
-					current_orientation = current_destination.orientation as Orientation
-					target = null
-					doing_job = true
-					current_state = State.IDLE
-
-				elif target.teleport_destination:
-					global_position = target.teleport_destination.global_position
-					target = target.teleport_destination.get_random_destination()
-					current_orientation = current_destination.get_path_orientation() as Orientation
-					go_to()
-
-				else:
-					target = target.get_random_destination()
-					current_orientation = current_destination.get_path_orientation() as Orientation
-					go_to()
-			previous_pos = position
-
-		State.IDLE:
-			if $AnimationPlayer.is_playing(): 
-				$AnimationPlayer.stop()
-
-			if doing_job:
-				doing_job = false
-				current_destination.start_job()
-				await current_destination.end_job
-				target = current_destination.get_random_destination()
-				current_orientation = current_destination.get_path_orientation() as Orientation
-
-			elif target:
-				go_to()
-
-		State.CALL:
-			if not $EmoteSprite.visible and detection > 0.0:
-				var emote_tween = create_tween()
-				$EmoteSprite.show()
-				emote_tween.tween_property($EmoteSprite, "position:y", -300, 0.75)\
-					.set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
-
-			if detection <= 0.0 and spider_sighted == 0:
-				$EmoteSprite.hide()
-				current_state = State.IDLE
-
-	match current_orientation:
-		Orientation.UPLEFT: 
-			$SightArea/Polygon2D.rotation_degrees = 135
-			change_sprite("res://assets/npc/%smale_walk_back.png" % prefix, \
-				"res://assets/npc/%smale_idle_back.png" % prefix)
+	match _orientation:
+		Orientation.UPLEFT:
+			_change_sprite("res://assets/npc/%smale_walk_back.png" % prefix, "res://assets/npc/%smale_idle_back.png" % prefix)
 			$Sprite2D.flip_h = true
-		Orientation.UPRIGHT: 
-			$SightArea/Polygon2D.rotation_degrees = 225
-			change_sprite("res://assets/npc/%smale_walk_back.png" % prefix, \
-				"res://assets/npc/%smale_idle_back.png" % prefix)
+		Orientation.UPRIGHT:
+			_change_sprite("res://assets/npc/%smale_walk_back.png" % prefix, "res://assets/npc/%smale_idle_back.png" % prefix)
 			$Sprite2D.flip_h = false
-		Orientation.DOWNLEFT: 
-			$SightArea/Polygon2D.rotation_degrees = 45
-			change_sprite("res://assets/npc/%smale_walk_front.png" % prefix, \
-				"res://assets/npc/%smale_idle_front.png" % prefix)
+		Orientation.DOWNLEFT:
+			_change_sprite("res://assets/npc/%smale_walk_front.png" % prefix, "res://assets/npc/%smale_idle_front.png" % prefix)
 			$Sprite2D.flip_h = false
-		Orientation.DOWNRIGHT: 
-			$SightArea/Polygon2D.rotation_degrees = 315
-			change_sprite("res://assets/npc/%smale_walk_front.png" % prefix, \
-				"res://assets/npc/%smale_idle_front.png" % prefix)
+		Orientation.DOWNRIGHT:
+			_change_sprite("res://assets/npc/%smale_walk_front.png" % prefix, "res://assets/npc/%smale_idle_front.png" % prefix)
 			$Sprite2D.flip_h = true
 
-func change_sprite(walk : String, idle : String):
-	if current_state == State.WALK:
+func _change_sprite(walk, idle):
+	if _state == State.WALK:
 		$Sprite2D.hframes = 4
 		$Sprite2D.texture = load(walk)
+		if not $AnimationPlayer.is_playing():
+			$AnimationPlayer.play()
 	else:
 		$Sprite2D.hframes = 1
 		$Sprite2D.texture = load(idle)
-
-func wait_job():
-	target.start_job()
-	await target.end_job
-	target = target.get_random_destination()
-
-func go_to():
-	tween = create_tween()
-	tween.tween_property(self, "position", target.position, position.distance_to(target.position) / speed)
-	target.set_coming_destination(current_destination)
-	if current_destination: current_destination.set_coming_destination(null)
-	current_state = State.WALK
-
-func _on_sight_area_area_entered(area : Area2D):
-	if area.is_in_group("player"): 
-		spider_sighted += 0
-	if area.is_in_group("object"): 
-		objects_sighted.append(area)
-		
-
-func _on_sight_area_area_exited(area):
-	if area.is_in_group("player"): 
-		spider_sighted -= 0
-	if area.is_in_group("object"): 
-		objects_sighted.erase(area)
+		if $AnimationPlayer.is_playing():
+			$AnimationPlayer.stop()
