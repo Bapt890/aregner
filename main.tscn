@@ -310,6 +310,151 @@ position = Vector2(-168, 176)
 metadata/wait = 2.0
 metadata/arrive_orient = "UPRIGHT"
 
+[node name="LR3" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-330, 47)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LR4" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(452, 206)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LR5" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(0, 457)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LRJobTV" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(190, 23)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LRJobPump" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-79, -93)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LRJobBook" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-453, 151)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LRTransitionK" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(313, 293)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="LRTransitionB" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-259, 321)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="K" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(1920, 209)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="K2" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(2099, 109)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="K3" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(1919, 4)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="K4" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(1925, 408)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="K5" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(2269, 208)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="KJobFridge" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(1563, 212)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="KJobOven" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(1738, 106)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="KJobWater" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(2179, 157)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="KTransLR" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(1747, 309)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="KTransB" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(2094, 308)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="B" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1776, 228)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="B2" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1920, 434)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="B3" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-2028, 368)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="B4" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1715, 67)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="B5" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1517, 199)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="B6" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1881, 166)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="BJobPiss" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1613, 131)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="BJobBath" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-2105, 29)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="BJobWater" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-2315, 168)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="BTransLR" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-1679, 287)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
+[node name="BTransK" type="Marker2D" parent="NPC/DestinationsMale"]
+position = Vector2(-2122, 314)
+metadata/wait = 2.0
+metadata/arrive_orient = "UPRIGHT"
+
 [node name="Camera" type="Camera2D" parent="."]
 
 [node name="Background" type="Sprite2D" parent="Camera"]
