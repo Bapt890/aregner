@@ -58,9 +58,10 @@ border_width_top = 4
 border_width_bottom = 4
 border_color = Color(0, 0, 0, 1)
 
-[node name="NPC" type="Node2D"]
+[node name="NPC" type="Node2D" node_paths=PackedStringArray("detection_bar")]
 y_sort_enabled = true
 script = ExtResource("1_54ctn")
+detection_bar = NodePath("ProgressBar")
 
 [node name="EmoteSprite" type="Sprite2D" parent="."]
 visible = false
@@ -76,7 +77,7 @@ position = Vector2(0, -100)
 texture = ExtResource("2_54ctn")
 hframes = 4
 
-[node name="SightArea" type="Area2D" parent="." groups=["player", "pnj1"]]
+[node name="SightArea" type="Area2D" parent="." groups=["pnj1"]]
 
 [node name="Polygon2D" type="CollisionPolygon2D" parent="SightArea"]
 polygon = PackedVector2Array(0, 0, 750, 750, -750, 750)

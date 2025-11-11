@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dftqgscgou0po"]
+[gd_scene load_steps=28 format=3 uid="uid://dftqgscgou0po"]
 
 [ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="1_5vw27"]
 [ext_resource type="Script" uid="uid://xjqqwks4jnbg" path="res://scripts/spiders.gd" id="1_ig7tw"]
@@ -17,6 +17,10 @@
 [ext_resource type="Script" uid="uid://le42puuhmucy" path="res://move_rooms.gd" id="13_vivmo"]
 [ext_resource type="PackedScene" uid="uid://46bdfyfs2pcc" path="res://bath_room.tscn" id="13_w48qg"]
 [ext_resource type="PackedScene" uid="uid://7j1od1qia3u1" path="res://kitchen_room.tscn" id="14_w48qg"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_yaehf"]
+radius = 25.0
+height = 86.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5vw27"]
 
@@ -84,11 +88,25 @@ func fear_changed():
 
 [node name="Main" type="Node2D"]
 
+[node name="MoveArea" type="Area2D" parent="."]
+position = Vector2(1920, -3)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="MoveArea"]
+polygon = PackedVector2Array(616, 157, 353, 0, 250, 58, 0, -94, -85, -44, -174, -90, -611, 163, 5, 514)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="MoveArea"]
+position = Vector2(-3832, -2)
+polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="MoveArea"]
+position = Vector2(-1920, 3)
+polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
+
 [node name="NPC" type="Node" parent="."]
 
-[node name="NPC" parent="NPC" node_paths=PackedStringArray("route_parent") instance=ExtResource("2_5vw27")]
+[node name="NPC" parent="NPC" node_paths=PackedStringArray("target") instance=ExtResource("2_5vw27")]
 position = Vector2(1940, 385)
-route_parent = NodePath("../DestinationsMale")
+target = NodePath("../Destinations/LR")
 
 [node name="spiders" type="CharacterBody2D" parent="NPC"]
 script = ExtResource("1_ig7tw")
@@ -98,24 +116,16 @@ script = ExtResource("1_ig7tw")
 [node name="MoveSound" type="AudioStreamPlayer" parent="NPC/spiders"]
 stream = ExtResource("4_kek77")
 
-[node name="MoveArea" type="Area2D" parent="NPC/spiders"]
-position = Vector2(1920, -3)
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="NPC/spiders/MoveArea"]
-polygon = PackedVector2Array(616, 157, 353, 0, 250, 58, 0, -94, -85, -44, -174, -90, -611, 163, 5, 514)
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="NPC/spiders/MoveArea"]
-position = Vector2(-3832, -2)
-polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
-
-[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="NPC/spiders/MoveArea"]
-position = Vector2(-1920, 3)
-polygon = PackedVector2Array(2, -190, 604, 160, -6, 515, -615, 163)
-
 [node name="Sprite2D" type="Sprite2D" parent="NPC/spiders"]
 texture = ExtResource("2_0xm2m")
 region_enabled = true
 region_rect = Rect2(0, 0, 95, 88)
+
+[node name="Area2D" type="Area2D" parent="NPC/spiders" groups=["player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="NPC/spiders/Area2D"]
+rotation = -1.5707964
+shape = SubResource("CapsuleShape2D_yaehf")
 
 [node name="Destinations" type="Node" parent="NPC"]
 
@@ -298,17 +308,6 @@ orientation = 1
 linked_destinations = [NodePath("../BJobWater"), NodePath("../B6"), NodePath("../B3")]
 destination_orientation = Array[int]([0, 1, 3])
 teleport_destination = NodePath("../KTransB")
-
-[node name="DestinationsMale" type="Node2D" parent="NPC"]
-
-[node name="LR" type="Marker2D" parent="NPC/DestinationsMale"]
-metadata/wait = 1.0
-metadata/arrive_orient = "UPLEFT"
-
-[node name="LR2" type="Marker2D" parent="NPC/DestinationsMale"]
-position = Vector2(-168, 176)
-metadata/wait = 2.0
-metadata/arrive_orient = "UPRIGHT"
 
 [node name="Camera" type="Camera2D" parent="."]
 
@@ -496,6 +495,6 @@ position = Vector2(-1920, 0)
 
 [node name="LivingRoom" parent="Rooms" instance=ExtResource("2_kek77")]
 
-[connection signal="input_event" from="NPC/spiders/MoveArea" to="NPC/spiders" method="_on_move_area_input_event"]
+[connection signal="input_event" from="MoveArea" to="NPC/spiders" method="_on_move_area_input_event"]
 [connection signal="pressed" from="CanvasLayer/ButtonLeft" to="Rooms" method="_on_button_left_pressed"]
 [connection signal="pressed" from="CanvasLayer/ButtonRight" to="Rooms" method="_on_button_right_pressed"]
