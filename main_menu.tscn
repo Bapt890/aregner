@@ -1,160 +1,123 @@
-[gd_scene load_steps=17 format=3 uid="uid://dvbgk030ern5w"]
+[gd_scene load_steps=19 format=3 uid="uid://dvbgk030ern5w"]
 
 [ext_resource type="Script" uid="uid://baexcjuo2kr5w" path="res://main_menu.gd" id="1_06t4h"]
 [ext_resource type="FontFile" uid="uid://cuq8cid3txxts" path="res://assets/fonts/Unkempt-Regular.ttf" id="2_glbon"]
-[ext_resource type="Texture2D" uid="uid://6kx5r2tl3b05" path="res://assets/mainmenu.png" id="2_nlkkf"]
-[ext_resource type="Texture2D" uid="uid://d1jfegrme7l14" path="res://assets/UI/E.png" id="3_nlkkf"]
-[ext_resource type="Texture2D" uid="uid://b3do3tkjq1gda" path="res://assets/UI/A.png" id="4_qe12f"]
-[ext_resource type="Texture2D" uid="uid://25qjtlvyjm1k" path="res://assets/UI/mouse.png" id="5_8qtwp"]
+[ext_resource type="Texture2D" uid="uid://btbl1fmc32805" path="res://assets/UI/main_menu/homepage_play_idle.png" id="3_g8g3n"]
+[ext_resource type="Texture2D" uid="uid://df7mkh5wsts3j" path="res://assets/UI/main_menu/homepage_play_press.png" id="4_8u0te"]
+[ext_resource type="Texture2D" uid="uid://mf2o1wneuofd" path="res://assets/UI/main_menu/homepage_play_hover.png" id="5_oiatc"]
+[ext_resource type="Texture2D" uid="uid://dcceg1qxpn7eq" path="res://assets/UI/main_menu/homepage_credits_idle.png" id="6_mg3m2"]
+[ext_resource type="Texture2D" uid="uid://mc5bxfyos61t" path="res://assets/UI/main_menu/homepage_credits_press.png" id="7_ojb7r"]
 [ext_resource type="Texture2D" uid="uid://bdo5e87jojc18" path="res://assets/Credit.png" id="7_qe12f"]
 [ext_resource type="AudioStream" uid="uid://btq4m48gadra" path="res://assets/SFX/Eleazar-Floirat-musiquemenu-_1_.mp3" id="8_8qtwp"]
-[ext_resource type="Texture2D" uid="uid://bpahkdymxv4ih" path="res://assets/controles.png" id="9_dy7ct"]
+[ext_resource type="Texture2D" uid="uid://ffkwi1i1k3n2" path="res://assets/UI/main_menu/homepage_credits_hover.png" id="8_e5qqf"]
+[ext_resource type="Texture2D" uid="uid://du3i83atlgvsj" path="res://assets/UI/main_menu/homepage_controls_idle.png" id="9_7bbuq"]
+[ext_resource type="Texture2D" uid="uid://bj4f5ww0coyhx" path="res://assets/UI/main_menu/homepage_controls_press.png" id="10_saq78"]
+[ext_resource type="Texture2D" uid="uid://b2i3n6qiqhyam" path="res://assets/UI/main_menu/homepage_controls_hover.png" id="11_8uw0o"]
+[ext_resource type="Texture2D" uid="uid://bmmhhij0uxb26" path="res://assets/background.png" id="12_ql5ya"]
+[ext_resource type="Texture2D" uid="uid://bpahkdymxv4ih" path="res://assets/UI/main_menu/controles.png" id="16_g8g3n"]
+[ext_resource type="Texture2D" uid="uid://bcefa2yv22yee" path="res://assets/UI/main_menu/homepage_title.png" id="16_ka3nr"]
 
-[sub_resource type="Theme" id="Theme_dy7ct"]
+[sub_resource type="Theme" id="Theme_48knj"]
 default_font = ExtResource("2_glbon")
-default_font_size = 32
+default_font_size = 72
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_8qtwp"]
+[sub_resource type="GDScript" id="GDScript_cm266"]
+resource_name = "TitleFloat"
+script/source = "extends TextureRect
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_dy7ct"]
+var t = 0.0 
+func _process(delta):
+	t += delta
+	position.y = lerp(position.y, 10 * sin(t) + 50, 0.1)
+"
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0o4t1"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0k4wn"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_j5v2v"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iotk1"]
-
-[node name="MainMenu" type="Node2D"]
-script = ExtResource("1_06t4h")
-
-[node name="TextureRect" type="TextureRect" parent="."]
-offset_right = 1921.0
-offset_bottom = 1080.0
-
-[node name="tutorial" type="Control" parent="."]
+[node name="MainMenu" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 74.0
-offset_top = 43.0
-offset_right = 74.0
-offset_bottom = 43.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
-theme = SubResource("Theme_dy7ct")
+theme = SubResource("Theme_48knj")
+script = ExtResource("1_06t4h")
 
-[node name="E" type="TextureRect" parent="tutorial"]
+[node name="background" type="TextureRect" parent="."]
 layout_mode = 0
-offset_left = 117.0
-offset_top = 257.0
-offset_right = 214.45883
-offset_bottom = 352.0
-texture = ExtResource("3_nlkkf")
-expand_mode = 3
-
-[node name="Label2" type="Label" parent="tutorial"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 352.0
-offset_right = 265.0
-offset_bottom = 391.0
-text = "Emprise Forte"
-horizontal_alignment = 1
-
-[node name="A" type="TextureRect" parent="tutorial"]
-layout_mode = 0
-offset_left = 117.0
-offset_top = 444.0
-offset_right = 214.68867
-offset_bottom = 539.0
-texture = ExtResource("4_qe12f")
-expand_mode = 3
-
-[node name="Label" type="Label" parent="tutorial"]
-layout_mode = 0
-offset_left = 71.0
-offset_top = 540.0
-offset_right = 255.0
-offset_bottom = 579.0
-text = "Emprise Faible"
-horizontal_alignment = 1
-
-[node name="A2" type="TextureRect" parent="tutorial"]
-layout_mode = 0
-offset_left = 129.68867
-offset_top = 629.2066
-offset_right = 199.0
-offset_bottom = 741.48035
-texture = ExtResource("5_8qtwp")
-expand_mode = 5
-
-[node name="Label3" type="Label" parent="tutorial"]
-layout_mode = 0
-offset_left = 78.0
-offset_top = 739.0
-offset_right = 244.0
-offset_bottom = 778.0
-text = "Deplacement"
-horizontal_alignment = 1
-
-[node name="Mainmenu" type="TextureRect" parent="."]
-offset_left = 1.0
-offset_top = -5.0
-offset_right = 1927.0
-offset_bottom = 1075.0
-texture = ExtResource("2_nlkkf")
-
-[node name="start" type="Button" parent="."]
-offset_left = 783.0
-offset_top = 572.0
-offset_right = 1044.0
-offset_bottom = 675.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8qtwp")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dy7ct")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0o4t1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0k4wn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_j5v2v")
-
-[node name="start2" type="Button" parent="."]
-offset_left = 788.0
-offset_top = 831.0
-offset_right = 1032.0
-offset_bottom = 928.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_8qtwp")
-theme_override_styles/pressed_mirrored = SubResource("StyleBoxEmpty_dy7ct")
-theme_override_styles/hover = SubResource("StyleBoxEmpty_0o4t1")
-theme_override_styles/disabled = SubResource("StyleBoxEmpty_0k4wn")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_j5v2v")
-
-[node name="TextureRect2" type="TextureButton" parent="."]
-visible = false
 offset_right = 1921.0
 offset_bottom = 1080.0
+texture = ExtResource("12_ql5ya")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -221.0
+offset_top = -63.0
+offset_right = 221.0
+offset_bottom = 379.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 32
+
+[node name="start" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture_normal = ExtResource("3_g8g3n")
+texture_pressed = ExtResource("4_8u0te")
+texture_hover = ExtResource("5_oiatc")
+
+[node name="credits" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture_normal = ExtResource("6_mg3m2")
+texture_pressed = ExtResource("7_ojb7r")
+texture_hover = ExtResource("8_e5qqf")
+
+[node name="controls" type="TextureButton" parent="VBoxContainer"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+texture_normal = ExtResource("9_7bbuq")
+texture_pressed = ExtResource("10_saq78")
+texture_hover = ExtResource("11_8uw0o")
+
+[node name="HomepageTitle" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -390.0
+offset_top = -473.0
+offset_right = 377.0
+offset_bottom = -106.0
+grow_horizontal = 2
+texture = ExtResource("16_ka3nr")
+script = SubResource("GDScript_cm266")
+
+[node name="credits" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 1080.0
+offset_right = 1921.0
+offset_bottom = 2160.0
 texture_normal = ExtResource("7_qe12f")
 texture_pressed = ExtResource("7_qe12f")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("8_8qtwp")
 autoplay = true
+parameters/looping = true
 
-[node name="controles" type="Button" parent="."]
-offset_left = 808.0
-offset_top = 687.0
-offset_right = 1140.0
-offset_bottom = 809.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_iotk1")
-
-[node name="TextureRect3" type="TextureRect" parent="."]
-visible = false
+[node name="controls" type="TextureButton" parent="."]
+layout_mode = 0
+offset_top = 1080.0
 offset_right = 1927.0
-offset_bottom = 1074.0
-texture = ExtResource("9_dy7ct")
+offset_bottom = 2160.0
+texture_normal = ExtResource("16_g8g3n")
 
-[connection signal="pressed" from="start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="start2" to="." method="_on_start_2_pressed"]
-[connection signal="pressed" from="TextureRect2" to="." method="_on_texture_rect_2_pressed"]
-[connection signal="pressed" from="controles" to="." method="_on_controles_pressed"]
+[connection signal="pressed" from="VBoxContainer/start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="VBoxContainer/controls" to="." method="_on_controls_pressed"]
+[connection signal="pressed" from="credits" to="." method="_on_close_credits_pressed"]
+[connection signal="pressed" from="controls" to="." method="_on_close_controls_pressed"]
